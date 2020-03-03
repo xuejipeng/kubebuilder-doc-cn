@@ -1,8 +1,8 @@
 # Summary
 
-[Introduction](./introduction.md)
+[引言](./introduction.md)
 
-[Quick Start](快速开始.md)
+[快速开始](quick-start.md)
 
 ---
 

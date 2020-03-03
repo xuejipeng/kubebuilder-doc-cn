@@ -1,5 +1,5 @@
 **Note:** Impatient readers may head straight to [Quick
-Start](快速开始.md).
+Start](quick-start.md).
 
 **Using Kubebuilder v1? Check the [legacy
 documentation](https://book-v1.book.kubebuilder.io)**
