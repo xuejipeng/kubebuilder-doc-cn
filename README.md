@@ -1,0 +1,1 @@
+# kubebuilder-doc-cn
