@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8393ca5-f57e-4c47-b258-97b76eccdb31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cronjob-tutorial/testdata/emptymain-cn.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SUMMARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/SUMMARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/empty-main.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/empty-main.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,21 +44,33 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="quick start done" />
     <MESSAGE value="翻译 '1. 教程: 构建 CronJob'" />
     <MESSAGE value="translate: basic-project.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="translate: basic-project.md" />
+    <MESSAGE value="translate empty-main.md and add emptymain-cn.go" />
+    <option name="LAST_COMMIT_MESSAGE" value="translate empty-main.md and add emptymain-cn.go" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="283" y="23" key="CommitChangelistDialog2" timestamp="1583252324912">
+    <state x="283" y="23" key="CommitChangelistDialog2" timestamp="1583252346142">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="199" y="23" key="CommitChangelistDialog2/0.23.1280.728@0.23.1280.728" timestamp="1583223899744" />
-    <state x="283" y="23" key="CommitChangelistDialog2/0.23.1280.730@0.23.1280.730" timestamp="1583252324912" />
+    <state x="283" y="23" key="CommitChangelistDialog2/0.23.1280.730@0.23.1280.730" timestamp="1583252346142" />
     <state x="128" y="85" key="DiffContextDialog" timestamp="1583239589988">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
