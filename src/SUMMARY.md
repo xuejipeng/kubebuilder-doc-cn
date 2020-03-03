@@ -2,7 +2,7 @@
 
 [Introduction](./introduction.md)
 
-[Quick Start](./quick-start.md)
+[Quick Start](快速开始.md)
 
 ---
 

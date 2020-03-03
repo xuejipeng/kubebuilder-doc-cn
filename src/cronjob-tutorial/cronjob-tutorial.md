@@ -38,9 +38,9 @@ directory.
 
 ## Scaffolding Out Our Project
 
-As covered in the [quick start](../quick-start.md), we'll need to scaffold
+As covered in the [quick start](../快速开始.md), we'll need to scaffold
 out a new project.  Make sure you've [installed
-Kubebuilder](../quick-start.md#installation), then scaffold out a new
+Kubebuilder](../快速开始.md#installation), then scaffold out a new
 project:
 
 ```bash

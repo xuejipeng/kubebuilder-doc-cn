@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e8393ca5-f57e-4c47-b258-97b76eccdb31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/book/.nojekyll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/FontAwesome/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/FontAwesome/fonts/FontAwesome.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/FontAwesome/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/FontAwesome/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/FontAwesome/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/FontAwesome/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/FontAwesome/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/TODO.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/ayu-highlight.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/book.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/clipboard.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/api-design.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/basic-project.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/cert-manager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/controller-implementation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/controller-overview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/cronjob-tutorial.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/empty-main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/epilogue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/gvks.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/main-revisited.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/new-api.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/other-api-files.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/running-webhook.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/running.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/emptyapi.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/emptycontroller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/emptymain.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/finalizer_example.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/PROJECT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/api/v1/cronjob_types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/api/v1/cronjob_webhook.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/api/v1/groupversion_info.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/api/v1/zz_generated.deepcopy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/certmanager/certificate.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/certmanager/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/certmanager/kustomizeconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/crd/bases/batch.tutorial.kubebuilder.io_cronjobs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/crd/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/crd/kustomizeconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/crd/patches/cainjection_in_cronjobs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/crd/patches/webhook_in_cronjobs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/default/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/default/manager_auth_proxy_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/default/manager_image_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/default/manager_prometheus_metrics_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/default/manager_webhook_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/default/webhookcainjection_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/manager/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/manager/manager.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/auth_proxy_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/auth_proxy_role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/auth_proxy_service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/leader_election_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/leader_election_role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/rbac/role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/samples/batch_v1_cronjob.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/webhook/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/webhook/kustomizeconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/webhook/manifests.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/config/webhook/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/controllers/cronjob_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/hack/boilerplate.go.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/hack/kind-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/testdata/project/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/cronjob-tutorial/webhook-implementation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/css/chrome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/css/general.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/css/print.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/css/variables.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/elasticlunr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/highlight.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/highlight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/introduction.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/mark.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/multi-group.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/Gopkg.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/Gopkg.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/PROJECT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/cmd/manager/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/crds/batch_v1_cronjob.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/default/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/default/manager_auth_proxy_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/default/manager_image_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/default/manager_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/default/manager_prometheus_metrics_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/manager/manager.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/rbac/auth_proxy_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/rbac/auth_proxy_role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/rbac/auth_proxy_service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/rbac/rbac_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/rbac/rbac_role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/samples/batch_v1_cronjob.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/config/webhook/webhookmanifests.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/hack/boilerplate.go.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/addtoscheme_batch_v1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/apis.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/batch/group.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/batch/v1/cronjob_types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/batch/v1/cronjob_types_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/batch/v1/doc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/batch/v1/register.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/batch/v1/v1_suite_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/apis/batch/v1/zz_generated.deepcopy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/controller/add_cronjob.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/controller/controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/controller/cronjob/cronjob_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/controller/cronjob/cronjob_controller_suite_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/add_default_server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/add_mutating_cronjob.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/add_validating_cronjob.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/mutating/create_update_webhook.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/mutating/cronjob_create_update_handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/mutating/webhooks.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/validating/create_webhook.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/validating/cronjob_create_handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/validating/cronjob_update_handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/validating/update_webhook.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/cronjob/validating/webhooks.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/default_server/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/testdata/gopath/project-v1/pkg/webhook/webhook.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migration/v1vsv2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/migrations.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/api-changes.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/complete-graph-8.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/conversion-concepts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/conversion-diagram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/conversion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/deployment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/hub-spoke-graph.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/PROJECT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v1/cronjob_conversion.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v1/cronjob_types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v1/cronjob_webhook.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v1/groupversion_info.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v1/zz_generated.deepcopy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v2/cronjob_conversion.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v2/cronjob_types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v2/groupversion_info.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/api/v2/zz_generated.deepcopy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/crd/bases/batch.tutorial.kubebuilder.io_cronjobs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/crd/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/crd/kustomizeconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/crd/patches/cainjection_in_cronjobs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/crd/patches/webhook_in_cronjobs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/default/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/default/manager_auth_proxy_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/default/manager_image_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/default/manager_prometheus_metrics_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/default/manager_webhook_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/default/webhookcainjection_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/samples/batch_v1_cronjob.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/config/samples/batch_v2_cronjob.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/controllers/cronjob_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/testdata/project/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/tutorial.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/multiversion-tutorial/webhooks.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/print.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/quick-start.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/admission-webhook.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/artifacts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/controller-gen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/generating-crd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/kind.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/markers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/markers/crd-processing.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/markers/crd-validation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/markers/crd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/markers/object.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/markers/rbac.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/markers/webhook.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/metrics.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/reference.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/testing/envtest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/using-finalizers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/webhook-for-core-types.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/webhook-overview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/reference/writing-tests.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/searcher.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/searchindex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/searchindex.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/tomorrow-night.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book.toml" beforeDir="false" afterPath="$PROJECT_DIR$/book.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quick-start.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/quick-start.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YbpERa108XoY1Ygsy0EdNfTajW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="149" y="26" key="SettingsEditor" timestamp="1583221177603">
+      <screen x="0" y="23" width="1280" height="728" />
+    </state>
+    <state x="149" y="26" key="SettingsEditor/0.23.1280.728@0.23.1280.728" timestamp="1583221177603" />
+    <state x="306" y="144" width="667" height="486" key="find.popup" timestamp="1583221116207">
+      <screen x="0" y="23" width="1280" height="728" />
+    </state>
+    <state x="306" y="144" width="667" height="486" key="find.popup/0.23.1280.728@0.23.1280.728" timestamp="1583221116207" />
+  </component>
+</project>
