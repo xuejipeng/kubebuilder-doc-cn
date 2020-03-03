@@ -51,15 +51,19 @@ kubebuilder init --domain my.domain
 ```
 
 <aside class="note">
+
 <h1>项目不在 $GOPATH 下</h1>
-如果创建的项目不在`GOPATH`中，为了让 kubebuilder 和 Go 识别导入路径，需要运行` go mod init <modulename> ` 
+
+如果创建的项目不在`GOPATH`中，为了让 kubebuilder 和 Go 识别导入路径，需要运行 ` go mod init <modulename> `
 
 对于 `GOPATH` 的解释可以参考 [How to Write Go Code][how-to-write-go-code-golang-docs] 中的 [The GOPATH environment variable][GOPATH-golang-docs] 
 
 </aside>
 
 <aside class="note">
+
 <h1>Go package 问题</h1>
+
 如果报错 `cannot find package ... (from $GOROOT)` 请执行`$ export GO111MODULE=on` 开启 Go module 模式。
 
 </aside>
@@ -79,7 +83,7 @@ kubebuilder create api --group webapp --version v1 --kind Guestbook
 
 `Create Resource [y/n]：y` 创建文件`api/v1/guestbook_types.go`，此文件用来定义 API
 
-`Create Controller [y/n]：y` 创建文件 `controller/guestbook_controller.go`，此文件用来实现 Kind(CRD) 的业务逻辑
+`Create Controller [y/n]：y` 创建文件 `controller/guestbook_controller.go`，此文件用来编写实现 Kind(CRD) 的业务逻辑
 
 
 </aside>
@@ -88,7 +92,7 @@ kubebuilder create api --group webapp --version v1 --kind Guestbook
 a Controller](cronjob-tutorial/controller-overview.md).
 
 
-<details><summary>单机查看示例 `(api/v1/guestbook_types.go)` </summary>
+<details><summary>查看示例 `(api/v1/guestbook_types.go)` </summary>
 <p>
 
 ```go
