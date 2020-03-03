@@ -8,7 +8,7 @@
 
 - [教程: 构建 CronJob](cronjob-tutorial/cronjob-tutorial.md)
 
-  - [What's in a basic project?](./cronjob-tutorial/basic-project.md)
+  - [基础项目中什么?](./cronjob-tutorial/basic-project.md)
   - [Every journey needs a start, every program a main](./cronjob-tutorial/empty-main.md)
   - [Groups and Versions and Kinds, oh my!](./cronjob-tutorial/gvks.md)
   - [Adding a new API](./cronjob-tutorial/new-api.md)
