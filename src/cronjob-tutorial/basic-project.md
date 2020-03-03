@@ -2,7 +2,7 @@
 
 在创建新项目时，Kubebuilder 为我们提供了一些基本的模板。
 
-## 基础设施
+## 基础设施模板
 
 
 首先，会创建一些用于构建项目的 basic infrastructure：
@@ -28,7 +28,7 @@
 ```
 </details>
 
-## 启动配置项
+## 启动配置项模板
 
 我们能在 [`config/`](https://github.com/kubernetes-sigs/kubebuilder/tree/master/docs/book/src/cronjob-tutorial/testdata/project/config) 目录下找到运行 operator 所需的所有配置文件，现在它只包含运行 controller 所需要的 [Kustomize](https://sigs.k8s.io/kustomize) YAML 配置文件，后续我们编写 operator 时，这个目录还会包含 CustomResourceDefinitions(CRD)、RBAC 和 Webhook 等相关的配置文件
 
@@ -42,4 +42,4 @@
 
 ## 程序入口
 
-最后，但同样重要的是，Kubebuilder 创建了我们项目的程序入口：main.go。让我们看看下一个...
+最后，但同样重要的是，Kubebuilder 创建了我们项目的程序入口：main.go。下面让我们看看这个文件...

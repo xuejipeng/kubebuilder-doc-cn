@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e8393ca5-f57e-4c47-b258-97b76eccdb31" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/basic-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/basic-project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/testdata/emptymain-cn.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/testdata/emptymain-cn.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
