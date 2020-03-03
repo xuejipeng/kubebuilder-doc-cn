@@ -15,6 +15,7 @@
 - [kustomize](https://sigs.k8s.io/kustomize/docs/INSTALL.md) v3.1.0+
 - Access to a Kubernetes v1.11.3+ cluster.
 
+<span id="installation"></span>
 ## 安装
 
 安装 [kubebuilder](https://sigs.k8s.io/kubebuilder):

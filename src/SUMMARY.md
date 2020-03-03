@@ -2,11 +2,11 @@
 
 [引言](./introduction.md)
 
-[快速开始](quick-start.md)
+[快速入门](quick-start.md)
 
 ---
 
-- [Tutorial: Building CronJob](cronjob-tutorial/cronjob-tutorial.md)
+- [教程: 构建 CronJob](cronjob-tutorial/cronjob-tutorial.md)
 
   - [What's in a basic project?](./cronjob-tutorial/basic-project.md)
   - [Every journey needs a start, every program a main](./cronjob-tutorial/empty-main.md)

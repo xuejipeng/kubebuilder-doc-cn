@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8393ca5-f57e-4c47-b258-97b76eccdb31" name="Default Changelist" comment="">
+    <list default="true" id="e8393ca5-f57e-4c47-b258-97b76eccdb31" name="Default Changelist" comment="quick start done">
+      <change beforePath="$PROJECT_DIR$/.idea/kubebuilder-doc-cn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kubebuilder-doc-cn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SUMMARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/SUMMARY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/quick-start.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/quick-start.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +27,14 @@
     <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="go.sdk" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -41,14 +47,20 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="199" y="23" key="CommitChangelistDialog2" timestamp="1583222671194">
-      <screen x="0" y="23" width="1280" height="728" />
+    <state x="199" y="23" key="CommitChangelistDialog2" timestamp="1583239593414">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state x="199" y="23" key="CommitChangelistDialog2/0.23.1280.728@0.23.1280.728" timestamp="1583222671194" />
-    <state x="149" y="26" key="SettingsEditor" timestamp="1583221177603">
-      <screen x="0" y="23" width="1280" height="728" />
+    <state x="199" y="23" key="CommitChangelistDialog2/0.23.1280.728@0.23.1280.728" timestamp="1583223899744" />
+    <state x="199" y="23" key="CommitChangelistDialog2/0.23.1280.730@0.23.1280.730" timestamp="1583239593414" />
+    <state x="128" y="85" key="DiffContextDialog" timestamp="1583239589988">
+      <screen x="0" y="23" width="1280" height="730" />
+    </state>
+    <state x="128" y="85" key="DiffContextDialog/0.23.1280.730@0.23.1280.730" timestamp="1583239589988" />
+    <state x="149" y="26" key="SettingsEditor" timestamp="1583239677940">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="149" y="26" key="SettingsEditor/0.23.1280.728@0.23.1280.728" timestamp="1583221177603" />
+    <state x="149" y="26" key="SettingsEditor/0.23.1280.730@0.23.1280.730" timestamp="1583239677940" />
     <state x="306" y="144" width="667" height="486" key="find.popup" timestamp="1583221116207">
       <screen x="0" y="23" width="1280" height="728" />
     </state>

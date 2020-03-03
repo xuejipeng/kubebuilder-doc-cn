@@ -1,34 +1,21 @@
-# Tutorial: Building CronJob
+# 教程：构建 CronJob
 
-Too many tutorials start out with some really contrived setup, or some toy
-application that gets the basics across, and then stalls out on the more
-complicated stuff.  Instead, this tutorial should take you through (almost)
-the full gamut of complexity with Kubebuilder, starting off simple and
-building up to something pretty full-featured.
+很多教程都是从一些人为设置好的程序开始，或者是给你一些了解基础知识的小应用程序，这些不能让你深入了解更复杂的东西。 相反，本教程几乎带会您了解 Kubebuilder 的全部复杂性，从简单开始，然后逐步发展为功能齐全的产品。
 
-Let's pretend (and sure, this is a teensy bit contrived) that we've
-finally gotten tired of the maintenance burden of the non-Kubebuilder
-implementation of the CronJob controller in Kubernetes, and we'd like to
-rewrite it using KubeBuilder.
 
-The job (no pun intended) of the *CronJob* controller is to run one-off
-tasks on the Kubernetes cluster at regular intervals.  It does this by
-building on top of the *Job* controller, whose task is to run one-off tasks
-once, seeing them to completion.
+现在让我们假设 Kubernetes 中实现的 `CronJob Controller` 并不能满足我们的需求，我们希望使用 Kubebuilder 重写它。
 
-Instead of trying to tackle rewriting the Job controller as well, we'll
-use this as an opportunity to see how to interact with external types.
+`CronJob controller` 会控制 kubernetes 集群上的 job 每隔一段时间运行一次，它是基于 `Job controller` 实现的，`Job controller` 的 job 只会执行任务一次。
+
+通过重写 `Job controller`，我们可以更加了解如何与不属于集群的资源类型进行交互。
+
 
 <aside class="note">
 
-<h1>Following Along vs Jumping Ahead</h1>
+<h1>注意</h1>
 
-Note that most of this tutorial is generated from literate Go files that
-live in the book source directory:
-[docs/book/src/cronjob-tutorial/testdata][tutorial-source].  The full,
-runnable project lives in [project][tutorial-project-source], while
-intermediate files live directly under the [testdata][tutorial-source]
-directory.
+请注意，本教程的大部分内容是由 literal Go 文件打包生成的：[docs/book/src/cronjob-tutorial/testdata][tutorial-source]，完整的可运行项目位于[project][tutorial-project-source]中，而打包生成的中间文件位于[testdata][tutorial-source]目录下。
+
 
 [tutorial-source]: https://github.com/kubernetes-sigs/kubebuilder/tree/master/docs/book/src/cronjob-tutorial/testdata
 
@@ -36,12 +23,9 @@ directory.
 
 </aside>
 
-## Scaffolding Out Our Project
+## 创建我们的项目
 
-As covered in the [quick start](../quick-start.md), we'll need to scaffold
-out a new project.  Make sure you've [installed
-Kubebuilder](../quick-start.md#installation), then scaffold out a new
-project:
+如[快速入门](../quick-start.md)中所述，我们需要创建一个新项目，请确保已经[安装Kubebuilder](../quick-start.md#installation) ，然后执行如下命令创建一个新项目：
 
 ```bash
 # we'll use a domain of tutorial.kubebuilder.io,
@@ -49,5 +33,4 @@ project:
 kubebuilder init --domain tutorial.kubebuilder.io
 ```
 
-Now that we've got a project in place, let's take a look at what
-Kubebuilder has scaffolded for us so far...
+现在我们已经有了一个项目，让我们看一下到目前为止 Kubebuilder 为我们搭建的脚手架...
