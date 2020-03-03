@@ -1,7 +1,0 @@
-version: "2"
-domain: tutorial.kubebuilder.io
-repo: tutorial.kubebuilder.io/project
-resources:
-- group: batch
-  version: v2
-  kind: CronJob
