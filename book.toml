@@ -1,8 +1,8 @@
 [book]
-authors = ["The Kubebuilder Maintainers"]
+authors = ["薛继鹏"]
 multilingual = false
 src = "src"
-title = "The Kubebuilder Book"
+title = "Kubebuilder Book 中文文档"
 
 [output.html]
 google-analytics = "UA-119864590-1"
