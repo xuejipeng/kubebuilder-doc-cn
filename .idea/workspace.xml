@@ -68,10 +68,11 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="283" y="23" key="CommitChangelistDialog2" timestamp="1583252346142">
-      <screen x="0" y="23" width="1280" height="730" />
+    <state x="283" y="23" key="CommitChangelistDialog2" timestamp="1583254249874">
+      <screen x="0" y="23" width="1280" height="729" />
     </state>
     <state x="199" y="23" key="CommitChangelistDialog2/0.23.1280.728@0.23.1280.728" timestamp="1583223899744" />
+    <state x="283" y="23" key="CommitChangelistDialog2/0.23.1280.729@0.23.1280.729" timestamp="1583254249874" />
     <state x="283" y="23" key="CommitChangelistDialog2/0.23.1280.730@0.23.1280.730" timestamp="1583252346142" />
     <state x="128" y="85" key="DiffContextDialog" timestamp="1583239589988">
       <screen x="0" y="23" width="1280" height="730" />
