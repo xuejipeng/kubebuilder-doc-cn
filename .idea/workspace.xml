@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8393ca5-f57e-4c47-b258-97b76eccdb31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cronjob-tutorial/testdata/emptymain-cn.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SUMMARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/SUMMARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/basic-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/basic-project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/empty-main.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/empty-main.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
@@ -22,6 +31,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -40,17 +50,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="quick start done" />
     <MESSAGE value="翻译 '1. 教程: 构建 CronJob'" />
-    <option name="LAST_COMMIT_MESSAGE" value="翻译 '1. 教程: 构建 CronJob'" />
+    <MESSAGE value="translate: basic-project.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="translate: basic-project.md" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="199" y="23" key="CommitChangelistDialog2" timestamp="1583240015908">
+    <state x="283" y="23" key="CommitChangelistDialog2" timestamp="1583252324912">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="199" y="23" key="CommitChangelistDialog2/0.23.1280.728@0.23.1280.728" timestamp="1583223899744" />
-    <state x="199" y="23" key="CommitChangelistDialog2/0.23.1280.730@0.23.1280.730" timestamp="1583240015908" />
+    <state x="283" y="23" key="CommitChangelistDialog2/0.23.1280.730@0.23.1280.730" timestamp="1583252324912" />
     <state x="128" y="85" key="DiffContextDialog" timestamp="1583239589988">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
@@ -60,13 +71,15 @@
     </state>
     <state x="149" y="26" key="SettingsEditor/0.23.1280.728@0.23.1280.728" timestamp="1583221177603" />
     <state x="149" y="26" key="SettingsEditor/0.23.1280.730@0.23.1280.730" timestamp="1583240212849" />
-    <state x="306" y="144" width="667" height="486" key="find.popup" timestamp="1583221116207">
-      <screen x="0" y="23" width="1280" height="728" />
+    <state x="306" y="144" width="667" height="488" key="find.popup" timestamp="1583244008754">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="306" y="144" width="667" height="486" key="find.popup/0.23.1280.728@0.23.1280.728" timestamp="1583221116207" />
-    <state x="305" y="75" width="670" height="676" key="search.everywhere.popup" timestamp="1583223818463">
-      <screen x="0" y="23" width="1280" height="728" />
+    <state x="306" y="144" width="667" height="488" key="find.popup/0.23.1280.730@0.23.1280.730" timestamp="1583244008754" />
+    <state x="305" y="75" width="670" height="678" key="search.everywhere.popup" timestamp="1583251689259">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="305" y="75" width="670" height="676" key="search.everywhere.popup/0.23.1280.728@0.23.1280.728" timestamp="1583223818463" />
+    <state x="305" y="75" width="670" height="678" key="search.everywhere.popup/0.23.1280.730@0.23.1280.730" timestamp="1583251689259" />
   </component>
 </project>

@@ -14,7 +14,7 @@
 
 <h1>注意</h1>
 
-请注意，本教程的大部分内容是由 literal Go 文件打包生成的：[docs/book/src/cronjob-tutorial/testdata][tutorial-source]，完整的可运行项目位于[project][tutorial-project-source]中，而打包生成的中间文件位于[testdata][tutorial-source]目录下。
+请注意，本教程的大部分内容是由 literal Go 动态生成的：[docs/book/src/cronjob-tutorial/testdata][tutorial-source]，完整的可运行项目位于[project][tutorial-project-source]中，而生成动态 markdown 的 GO 文件位于[testdata][tutorial-source]目录下。
 
 
 [tutorial-source]: https://github.com/kubernetes-sigs/kubebuilder/tree/master/docs/book/src/cronjob-tutorial/testdata
