@@ -7,12 +7,12 @@
 
 ## Groups 和 Versions
 
-Kubernetes 中的 `API Group` 只是相关功能的集合, 每个 `group` 包含一个或者多个 `versions`, 这样的关系可以让我们随着时间的推移，通过创建不同的 `versions ` 来更改 API 的工作方式。
+Kubernetes 中的 `API Group` 只是相关功能的集合, **每个 `group` 包含一个或者多个 `versions`**, 这样的关系可以让我们随着时间的推移，通过创建不同的 `versions ` 来更改 API 的工作方式。
 
 ## Kinds 和 Resources
 <h3>Kinds</h3>
 
-每个 `API group-version` 包含一个或者多个 API 类型, 我们称之为 `Kinds`.
+**每个 `API group-version` 包含一个或者多个 API 类型, 我们称之为 `Kinds`**.
 虽然同类型 `Kind` 在不同的 `version` 之间的表现形式可能不同，但是同类型 `Kind` 必须能够存储其他 `Kind` 的全部数据，也就是说同类型 `Kind` 之间必须是互相兼容的(我们可以把数据存到 fields 或者 annotations)，这样当你使用老版本的 `API group-version` 时不会造成丢失或损坏, 有关更多信息，请参见[Kubernetes API指南](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md)。
 
 <aside class="note">
