@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e8393ca5-f57e-4c47-b258-97b76eccdb31" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/basic-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/basic-project.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/cronjob-tutorial.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/testdata/emptymain-cn.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/testdata/emptymain-cn.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cronjob-tutorial/gvks.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/cronjob-tutorial/gvks.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -62,7 +63,8 @@
     <MESSAGE value="翻译 '1. 教程: 构建 CronJob'" />
     <MESSAGE value="translate: basic-project.md" />
     <MESSAGE value="translate empty-main.md and add emptymain-cn.go" />
-    <option name="LAST_COMMIT_MESSAGE" value="translate empty-main.md and add emptymain-cn.go" />
+    <MESSAGE value="review and change to human way" />
+    <option name="LAST_COMMIT_MESSAGE" value="review and change to human way" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -78,15 +80,15 @@
       <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="128" y="85" key="DiffContextDialog/0.23.1280.730@0.23.1280.730" timestamp="1583239589988" />
-    <state x="149" y="26" key="SettingsEditor" timestamp="1583240212849">
+    <state x="149" y="26" key="SettingsEditor" timestamp="1583326029646">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="149" y="26" key="SettingsEditor/0.23.1280.728@0.23.1280.728" timestamp="1583221177603" />
-    <state x="149" y="26" key="SettingsEditor/0.23.1280.730@0.23.1280.730" timestamp="1583240212849" />
-    <state x="306" y="144" width="667" height="488" key="find.popup" timestamp="1583244008754">
-      <screen x="0" y="23" width="1280" height="730" />
+    <state x="149" y="26" key="SettingsEditor/0.23.1280.730@0.23.1280.730" timestamp="1583326029646" />
+    <state x="306" y="144" width="667" height="486" key="find.popup" timestamp="1583336584697">
+      <screen x="0" y="23" width="1280" height="728" />
     </state>
-    <state x="306" y="144" width="667" height="486" key="find.popup/0.23.1280.728@0.23.1280.728" timestamp="1583221116207" />
+    <state x="306" y="144" width="667" height="486" key="find.popup/0.23.1280.728@0.23.1280.728" timestamp="1583336584697" />
     <state x="306" y="144" width="667" height="488" key="find.popup/0.23.1280.730@0.23.1280.730" timestamp="1583244008754" />
     <state x="305" y="75" width="670" height="678" key="search.everywhere.popup" timestamp="1583251689259">
       <screen x="0" y="23" width="1280" height="730" />

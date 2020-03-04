@@ -8,6 +8,13 @@ The kubebuilder book is served using [mdBook](https://github.com/rust-lang-nurse
 
 1. Follow the instructions at [https://github.com/rust-lang-nursery/mdBook#installation](https://github.com/rust-lang-nursery/mdBook#installation) to
   install mdBook.
-1. cd into the repo directory
-1. Run `mdbook serve`
-1. Visit [http://localhost:3000](http://localhost:3000)
+2. cd into the repo directory
+3. Run `mdbook serve`
+4. If you  get Error `not found controller-gen in $PATH`, you can do 
+
+  ```bash
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.2.5
+  ```
+5. Visit [http://localhost:3000](http://localhost:3000)

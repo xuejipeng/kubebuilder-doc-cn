@@ -10,7 +10,7 @@
 
   - [基础项目中什么?](./cronjob-tutorial/basic-project.md)
   - [每个程序都需要一个 main 入口](./cronjob-tutorial/empty-main.md)
-  - [Groups and Versions and Kinds, oh my!](./cronjob-tutorial/gvks.md)
+  - [Groups、Versions 和 Kinds 之间的关系](./cronjob-tutorial/gvks.md)
   - [Adding a new API](./cronjob-tutorial/new-api.md)
   - [Designing an API](./cronjob-tutorial/api-design.md)
 
