@@ -12,11 +12,11 @@
   - [每个程序都需要一个 main 入口](./cronjob-tutorial/empty-main.md)
   - [Groups、Versions 和 Kinds 之间的关系](./cronjob-tutorial/gvks.md)
   - [创建一个 API](./cronjob-tutorial/new-api.md)
-  - [Designing an API](./cronjob-tutorial/api-design.md)
+  - [设计一个 API](./cronjob-tutorial/api-design.md)
 
-      - [A Brief Aside: What's the rest of this stuff?](./cronjob-tutorial/other-api-files.md)
+      - [简要说明: 其他文件是干什么的?](./cronjob-tutorial/other-api-files.md)
 
-  - [What's in a controller?](./cronjob-tutorial/controller-overview.md)
+  - [controller 中有什么?](./cronjob-tutorial/controller-overview.md)
   - [Implementing a controller](./cronjob-tutorial/controller-implementation.md)
 
     - [You said something about main?](./cronjob-tutorial/main-revisited.md)

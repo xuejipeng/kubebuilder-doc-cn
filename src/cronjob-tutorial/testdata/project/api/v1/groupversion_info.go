@@ -15,11 +15,9 @@ limitations under the License.
 // +kubebuilder:docs-gen:collapse=Apache License
 
 /*
-First, we have some *package-level* markers that denote that there are
-Kubernetes objects in this package, and that this package represents the group
-`batch.tutorial.kubebuilder.io`. The `object` generator makes use of the
-former, while the latter is used by the CRD generator to generate the right
-metadata for the CRDs it creates from this package.
+首先，我们有一些 `package-level` 的标记，`+kubebuilder:object:generate=true` 表示该程序包中有 Kubernetes 对象，
+`+groupName=batch.tutorial.kubebuilder.io` 表示该程序包的 Api group 是 `batch.tutorial.kubebuilder.io`。
+`object` 生成器使用前者，而 CRD 生成器使用后者, 来为由此包创建的 CRD 生成正确的元数据。
 */
 
 // Package v1 contains API Schema definitions for the batch v1 API group
@@ -33,10 +31,10 @@ import (
 )
 
 /*
-Then, we have the commonly useful variables that help us set up our Scheme.
-Since we need to use all the types in this package in our controller, it's
-helpful (and the convention) to have a convenient method to add all the types to
-some other `Scheme`. SchemeBuilder makes this easy for us.
+然后，我们定义一些全局变量帮助我们建立 Scheme。
+由于我们需要在 controller 中使用此程序包中的所有 types，
+因此需要一种方便的方法（或约定）可以将所有 types 添加到其他 `Scheme` 中。
+`SchemeBuilder` 让我们做这件事情变的容易。
 */
 var (
 	// GroupVersion is group version used to register these objects

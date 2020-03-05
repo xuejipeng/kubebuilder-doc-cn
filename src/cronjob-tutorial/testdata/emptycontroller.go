@@ -15,9 +15,7 @@ limitations under the License.
 // +kubebuilder:docs-gen:collapse=Apache License
 
 /*
-First, we start out with some standard imports.
-As before, we need the core controller-runtime library, as well as
-the client package, and the package for our API types.
+首先，我们会 import 一些标准库。和以前一样，我们需要 `controller-runtime` 库，client 包以及我们定义的有关 API 类型的软件包。
 */
 package controllers
 
@@ -33,9 +31,8 @@ import (
 )
 
 /*
-Next, kubebuilder has scaffolded a basic reconciler struct for us.
-Pretty much every reconciler needs to log, and needs to be able to fetch
-objects, so these are added out of the box.
+接下来，kubebuilder 为我们搭建了一个基本的 `reconciler` 结构体。
+几乎每个 `reconciler` 都需要记录日志，并且需要能够获取对象，因此这个结构体是开箱即用的。
 */
 
 // CronJobReconciler reconciles a CronJob object
@@ -46,36 +43,32 @@ type CronJobReconciler struct {
 }
 
 /*
-Most controllers eventually end up running on the cluster, so they need RBAC
-permissions, which we specify using controller-tools [RBAC
-markers](/reference/markers/rbac.md).  These are the bare minimum permissions
-needed to run.  As we add more functionality, we'll need to revisit these.
+大多数 controllers 最终都会运行在 k8s 集群上，因此它们需要 RBAC 权限,
+我们使用 controller-tools [RBAC markers](/reference/markers/rbac.md) 指定了这些权限。
+这是运行所需的最小权限。
+随着我们添加更多功能，我们将会重新定义这些权限。
 */
 
 // +kubebuilder:rbac:groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=batch.tutorial.kubebuilder.io,resources=cronjobs/status,verbs=get;update;patch
 
 /*
-`Reconcile` actually performs the reconciling for a single named object.
-Our [Request](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/reconcile#Request) just has a name, but we can use the client to fetch
-that object from the cache.
+`Reconcile` 方法对个某个单一的 object 执行 `reconciling` 动作，
+我们的 [Request](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/reconcile#Request)只是一个 name，
+但是 client 可以通过 name 信息从 cache 中获取到对应的 object。
 
-We return an empty result and no error, which indicates to controller-runtime that
-we've successfully reconciled this object and don't need to try again until there's
-some changes.
+我们返回的 result 为空，且 error 为 nil，
+这表明 controller-runtime 已经成功 reconciled 了这个 object，无需进行任何重试，直到这个 object 被更改。
 
-Most controllers need a logging handle and a context, so we set them up here.
+大多数 controller 都需要一个 logging handle 和一个 context，因此我们在这里进行了设置。
 
-The [context](https://golang.org/pkg/context/) is used to allow cancelation of
-requests, and potentially things like tracing.  It's the first argument to all
-client methods.  The `Background` context is just a basic context without any
-extra data or timing restrictions.
+[context](https://golang.org/pkg/context/) 是用于允许取消请求或者用于跟踪之类的事情。
+这是所有 client 方法的第一个参数。
+`Background` context 只是一个 basic context，没有任何额外的数据或时间限制。
 
-The logging handle lets us log.  controller-runtime uses structured logging through a
-library called [logr](https://github.com/go-logr/logr).  As we'll see shortly,
-logging works by attaching key-value pairs to a static message.  We can pre-assign
-some pairs at the top of our reconcile method to have those attached to all log
-lines in this reconciler.
+logging handle 用于记录日志, controller-runtime 通过 [logr](https://github.com/go-logr/logr) 库结构化日志记录。
+稍后我们将看到，日志记录通过将 key-value 添加到静态消息中而起作用。
+我们可以在 reconcile 方法的顶部提前分配一些 key-value ,以便查找在这个 reconciler 中所有的日志
 */
 func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	_ = context.Background()
@@ -87,12 +80,9 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 }
 
 /*
-Finally, we add this reconciler to the manager, so that it gets started
-when the manager is started.
+最后，我们将此 reconciler 加到 manager，以便在启动 manager 时启动 reconciler。
 
-For now, we just note that this reconciler operates on `CronJob`s.  Later,
-we'll use this to mark that we care about related objects as well.
-
+现在，我们仅记录了 reconciler 在 `CronJob` 上的动作。稍后，我们将使用它来标记我们关心的 objects。
 */
 
 func (r *CronJobReconciler) SetupWithManager(mgr ctrl.Manager) error {

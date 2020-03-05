@@ -45,6 +45,7 @@ type CronJobStatus struct {
 	// Important: Run "make" to regenerate code after modifying this file
 }
 
+/*<span id="moment"></span>*/
 /*
 然后，我们定义了 Kinds 对应的结构体类型，`CronJob` 和 `CronJobList`。
 `CronJob` 是我们的 root type，用来描述 `CronJob Kind`。和所有 Kubernetes 对象一样，

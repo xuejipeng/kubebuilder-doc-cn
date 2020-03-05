@@ -1,22 +1,16 @@
-# What's in a controller?
+# controller 中有什么?
 
-Controllers are the core of Kubernetes, and of any operator.  
+`Controllers` 是 operator 和 Kubernetes 的核心组件。
 
-It's a controller's job to ensure that, for any given object, the actual
-state of the world (both the cluster state, and potentially external state
-like running containers for Kubelet or loadbalancers for a cloud provider)
-matches the desired state in the object.  Each controller focuses on one
-*root* Kind, but may interact with other Kinds.
+controller 的职责是确保实际的状态（包括群集状态，以及潜在的外部状态，例如正在运行的 Kubelet 容器和云提供商的 loadbalancers）与给定 object 期望的状态相匹配。
+每个 controller 专注于一个 `root Kind`，但也可以与其他 `Kinds` 进行交互。
 
-We call this process *reconciling*.
+这种努力达到期望状态的过程，我们称之为 `reconciling`(调和，使...一直)。
 
-In controller-runtime, the logic that implements the reconciling for
-a specific kind is called a [*Reconciler*](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/reconcile).  A reconciler
-takes the name of an object, and returns whether or not we need to try
-again (e.g. in case of errors or periodic controllers, like the
-HorizontalPodAutoscaler).
+在 controller-runtime 库中，实现 Kind reconciling 的逻辑我们称为
+ [*Reconciler*](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/reconcile)。
+ `reconciler` 获取对象的名称并返回是否需要重试(例如: 发生错误或是一些周期性的 controllers，像 HorizontalPodAutoscale)。
 
 {{#literatego ./testdata/emptycontroller.go}}
 
-Now that we've seen the basic structure of a reconciler, let's fill out
-the logic for `CronJob`s.
+现在，我们已经看到了 controller 的基本结构，下一步让我们来填写 `CronJob` 的逻辑

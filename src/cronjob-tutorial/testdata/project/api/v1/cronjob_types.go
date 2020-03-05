@@ -143,8 +143,9 @@ type CronJobStatus struct {
 }
 
 /*
+<span id="installation"></span>
 最后我们只剩下了 `CronJob` 结构体，如之前说的，我们不需要修改改结构体的任何内容，
-但是我们希望操作改 Kind 像操作 Kubernetes 内置资源一样，所以我们需要增加一个 mark,
+但是我们希望操作改 Kind 像操作 Kubernetes 内置资源一样，所以我们需要增加一个 mark `+kubebuilder:subresource:status`,
 来声明一个status subresource, 关于 subresource 的更多信息可以参考
 [k8s 文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#subresources)
 */
