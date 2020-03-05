@@ -17,7 +17,7 @@
       - [简要说明: 其他文件是干什么的?](./cronjob-tutorial/other-api-files.md)
 
   - [controller 中有什么?](./cronjob-tutorial/controller-overview.md)
-  - [Implementing a controller](./cronjob-tutorial/controller-implementation.md)
+  - [实现一个 controller](./cronjob-tutorial/controller-implementation.md)
 
     - [You said something about main?](./cronjob-tutorial/main-revisited.md)
 
