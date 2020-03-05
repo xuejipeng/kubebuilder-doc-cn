@@ -11,7 +11,7 @@
   - [基础项目中什么?](./cronjob-tutorial/basic-project.md)
   - [每个程序都需要一个 main 入口](./cronjob-tutorial/empty-main.md)
   - [Groups、Versions 和 Kinds 之间的关系](./cronjob-tutorial/gvks.md)
-  - [Adding a new API](./cronjob-tutorial/new-api.md)
+  - [创建一个 API](./cronjob-tutorial/new-api.md)
   - [Designing an API](./cronjob-tutorial/api-design.md)
 
       - [A Brief Aside: What's the rest of this stuff?](./cronjob-tutorial/other-api-files.md)

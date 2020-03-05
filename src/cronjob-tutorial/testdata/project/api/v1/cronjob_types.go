@@ -28,31 +28,27 @@ import (
 // +kubebuilder:docs-gen:collapse=Imports
 
 /*
-First, let's take a look at our spec.  As we discussed before, spec holds
-*desired state*, so any "inputs" to our controller go here.
+首先，让我们看一下 `spec`，如我们之前说的，`spec` 表明**期望的状态**，所以有关 controller 的任何 "inputs" 都在这里声明。
 
-Fundamentally a CronJob needs the following pieces:
+一个基本的 CronJob 需要以下功能：
 
-- A schedule (the *cron* in CronJob)
-- A template for the Job to run (the
-*job* in CronJob)
+- 一个 schedule(调度器) -- (CronJob 中的 "Cron")
+- 用来运行 Job 的模板 -- (CronJob 中的 "Job")
 
-We'll also want a few extras, which will make our users' lives easier:
+为了让用户体现更好，我们也需要一些额外的功能：
 
-- A deadline for starting jobs (if we miss this deadline, we'll just wait till
-  the next scheduled time)
-- What to do if multiple jobs would run at once (do we wait? stop the old one? run both?)
-- A way to pause the running of a CronJob, in case something's wrong with it
-- Limits on old job history
+- 一个截止时间（`StartingDeadlineSeconds`）, 如果错过了这个截止时间，Job 将会等到下一个调度时间点再被调度。
+- 如果多个 Job 同时启动要怎么做（`ConcurrencyPolicy`）（等待？停掉最老的一个？还是同时运行？）
+- 一个暂停(`Suspend`)功能，以防止 Job 在运行过程中出现什么错误。
+- 限制历史 Job 的数量（`SuccessfulJobsHistoryLimit`）
 
-Remember, since we never read our own status, we need to have some other way to
-keep track of whether a job has run.  We can use at least one old job to do
-this.
+请记住，因为 job 不会读取自己的状态，所以我们需要用一些方式去跟踪一个 job 是否运行，
+我们可以用至少一个 old job 来完成这个功能。（不明白，回头再改）
 
-We'll use several markers (`// +comment`) to specify additional metadata.  These
-will be used by [controller-tools](https://github.com/kubernetes-sigs/controller-tools) when generating our CRD manifest.
-As we'll see in a bit, controller-tools will also use GoDoc to form descriptions for
-the fields.
+我们会用几个标记 (`// +comment`) 去定义一些额外的数据，这些标记在
+[controller-tools](https://github.com/kubernetes-sigs/controller-tools)
+生成 CRD manifest 时会被使用。
+稍后我们还将看到，controller-tools 还会使用 GoDoc 来为字段生成描述信息。
 */
 
 // CronJobSpec defines the desired state of CronJob
@@ -101,10 +97,9 @@ type CronJobSpec struct {
 }
 
 /*
-We define a custom type to hold our concurrency policy.  It's actually
-just a string under the hood, but the type gives extra documentation,
-and allows us to attach validation on the type instead of the field,
-making the validation more easily reusable.
+我们自定义了一个类型（`ConcurrencyPolicy`）来保存我们的并发策略。
+它实际上只是一个字符串，但是这个类型名称提供了额外的说明，
+我们还将验证附加到类型上,而不是字段上，从而使验证更易于重用。
 */
 
 // ConcurrencyPolicy describes how the job will be handled.
@@ -127,12 +122,10 @@ const (
 )
 
 /*
-Next, let's design our status, which holds observed state.  It contains any information
-we want users or other controllers to be able to easily obtain.
+下面，让我们设计 `status`,它用来存储观察到的状态。它包含我们希望用户或其他 controllers 能够获取的所有信息
 
-We'll keep a list of actively running jobs, as well as the last time that we successfully
-ran our job.  Notice that we use `metav1.Time` instead of `time.Time` to get the stable
-serialization, as mentioned above.
+我们将保留一份正在运行的 Job 列表，以及上一次成功运行 Job 的列表。
+注意，如上所述，我们使用 metav1.Time 而不是 time.Time 来获得稳定的序列化。
 */
 
 // CronJobStatus defines the observed state of CronJob
@@ -150,9 +143,10 @@ type CronJobStatus struct {
 }
 
 /*
-Finally, we have the rest of the boilerplate that we've already discussed.
-As previously noted, we don't need to change this, except to mark that
-we want a status subresource, so that we behave like built-in kubernetes types.
+最后我们只剩下了 `CronJob` 结构体，如之前说的，我们不需要修改改结构体的任何内容，
+但是我们希望操作改 Kind 像操作 Kubernetes 内置资源一样，所以我们需要增加一个 mark,
+来声明一个status subresource, 关于 subresource 的更多信息可以参考
+[k8s 文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#subresources)
 */
 
 // +kubebuilder:object:root=true

@@ -1,30 +1,20 @@
-# Adding a new API
+# 创建一个 API
 
-To scaffold out a new Kind (you were paying attention to the [last
-chapter](./gvks.md#kinds-and-resources), right?) and corresponding
-controller, we can use `kubebuilder create api`:
+创建一个新的 Kind (你还记得[上一章](./gvks.md#kinds-and-resources)的内容, 对吗?)和相应的 controller，我们可以使用` kubebuilder create api` 命令:
 
 ```bash
 kubebuilder create api --group batch --version v1 --kind CronJob
 ```
 
-The first time we call this command for each group-version, it will create
-a directory for the new group-version.
+当我们第一次执行这个命令时，它会为创建一个新的 `group-version` 目录
 
-In this case, the
-[`api/v1/`](https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/api/v1)
-directory is created, corresponding to the
-`batch.tutorial.kubebuilder.io/v1` (remember our [`--domain`
-setting](cronjob-tutorial.md#scaffolding-out-our-project) from the
-beginning?).
+在这里，[`api/v1/`](https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/api/v1) 这个目录会被创建, 对应的 `group-version` 是 `batch.tutorial.kubebuilder.io/v1` (还记得我们一开始设置的[`--domain`
+setting](cronjob-tutorial.md#scaffolding-out-our-project)) 参数么)
 
-It has also added a file for our `CronJob` Kind,
-`api/v1/cronjob_types.go`.  Each time we call the command with a different
-kind, it'll add a corresponding new file.
+它也会创建 `api/v1/cronjob_types.go` 文件并添加  `CronJob Kind`, 每次我们运行这个命令但是指定不同的 `Kind` 时, 他都会为我们创建一个 `xxx_types.go` 文件。
+ 
+先让我们看看我们得到了什么开箱即用的东西，然后我们就开始填写它。
 
-Let's take a look at what we've been given out of the box, then we can
-move on to filling it out.
+{{#literatego ./testdata/emptyapi-cn.go}}
 
-{{#literatego ./testdata/emptyapi.go}}
-
-Now that we've seen the basic structure, let's fill it out!
+现在，我们已经认识了基础的结构体，下一步我们开始填写它们！

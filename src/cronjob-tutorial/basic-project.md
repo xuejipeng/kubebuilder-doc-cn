@@ -7,21 +7,21 @@
 
 首先，会创建一些用于构建项目的 basic infrastructure：
 
-<details> <summary>`go.mod`: 一个与项目匹配，包含最基本依赖关系的 go module 文件</summary>
+<details> <summary><code>go.mod</code>: 一个与项目匹配，包含最基本依赖关系的 go module 文件</summary>
 
 ```go
 {{#include ./testdata/project/go.mod}}
 ```
 </details>
 
-<details><summary>`Makefile`: 用于构建和部署 controller</summary>
+<details><summary><code>Makefile</code>: 用于构建和部署 controller</summary>
 
 ```makefile
 {{#include ./testdata/project/Makefile}}
 ```
 </details>
 
-<details><summary>`PROJECT`: 用于创建新组件的 Kubebuilder 元数据</summary>
+<details><summary><code>PROJECT</code>: 用于创建新组件的 Kubebuilder 元数据</summary>
 
 ```yaml
 {{#include ./testdata/project/PROJECT}}
