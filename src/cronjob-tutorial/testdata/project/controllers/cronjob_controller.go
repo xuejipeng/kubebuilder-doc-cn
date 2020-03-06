@@ -88,15 +88,15 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	log := r.Log.WithValues("cronjob", req.NamespacedName)
 
 	/*
-			### 1: 按 namespace 加载 CronJob
+		### 1: 按 namespace 加载 CronJob
 
-			我们使用 client 获取 CronJob。
-		    所有的 client 方法都将 context（用来取消请求）作为其第一个参数，
-		    并将所讨论的 object 作为其最后一个参数。 Get 方法有点特殊，
-		    因为它使用 [`NamespacedName`](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/client#ObjectKey)
-		    作为中间参数（大多数没有中间参数，如下所示）。
+		我们使用 client 获取 CronJob。
+	    所有的 client 方法都将 context（用来取消请求）作为其第一个参数，
+	    并将所讨论的 object 作为其最后一个参数。 Get 方法有点特殊，
+	    因为它使用 [`NamespacedName`](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/client#ObjectKey)
+	    作为中间参数（大多数没有中间参数，如下所示）。
 
-		    最后，许多 client 方法也采用可变参数选项(也就是 "...")。
+	    最后，许多 client 方法也采用可变参数选项(也就是 "...")。
 	*/
 	var cronJob batch.CronJob
 	if err := r.Get(ctx, req.NamespacedName, &cronJob); err != nil {
@@ -108,10 +108,10 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	}
 
 	/*
-			### 2: 列出所有 active jobs，并更新状态
-			要完全更新我们的状态，我们需要列出此 namespace 中属于此 CronJob 的所有 Job。
-		    与 Get 方法类似，我们可以使用 List 方法列出 Job。
-		    注意，我们使用可变参数选项来设置 `client.InNamespace` 和 `client.MatchingFields`。
+		### 2: 列出所有 active jobs，并更新状态
+		要完全更新我们的状态，我们需要列出此 namespace 中属于此 CronJob 的所有 Job。
+	    与 Get 方法类似，我们可以使用 List 方法列出 Job。
+	    注意，我们使用可变参数选项来设置 `client.InNamespace` 和 `client.MatchingFields`。
 	*/
 	var childJobs kbatch.JobList
 	if err := r.List(ctx, &childJobs, client.InNamespace(req.Namespace), client.MatchingFields{jobOwnerKey: req.Name}); err != nil {
@@ -120,15 +120,15 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	}
 
 	/*
-			当得到所有的 Job 后，我们把 Job 的状态分为 active、successful和 failed,
-		    并跟踪他们最近的运行情况，以便将其记录在 status 中。
-		    请记住，status 应该可以从整体的状态重新构造，
-		    因此从 root object 的状态读取信息通常不是一个好主意。
-		    相反，您应该在每次运行时重新构建它。
-		    这就是我们在这里要做的。
+		当得到所有的 Job 后，我们把 Job 的状态分为 active、successful和 failed,
+	    并跟踪他们最近的运行情况，以便将其记录在 status 中。
+	    请记住，status 应该可以从整体的状态重新构造，
+	    因此从 root object 的状态读取信息通常不是一个好主意。
+	    相反，您应该在每次运行时重新构建它。
+	    这就是我们在这里要做的。
 
-			我们可以使用 status conditions 来检查作业是“完成”、成功或失败。
-			我们将把这种逻辑放在帮助程序中，以使我们的代码更整洁。
+		我们可以使用 status conditions 来检查作业是“完成”、成功或失败。
+		我们将把这种逻辑放在帮助程序中，以使我们的代码更整洁。
 	*/
 
 	// find the active list of jobs
@@ -138,9 +138,9 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	var mostRecentTime *time.Time // find the last run so we can update the status
 
 	/*
-			如果一项工作的 "succeeded" 或 "failed" 的 condition 标记为 "true"，我们认为该工作 "finished"。
-		    `Status.conditions` 使我们可以向 objects 添加可扩展的状态信息，
-			其他人和 controller 可以通过检查这些状态信息以确定 Job 完成和健康状况。
+		如果一项工作的 "succeeded" 或 "failed" 的 condition 标记为 "true"，我们认为该工作 "finished"。
+	    `Status.conditions` 使我们可以向 objects 添加可扩展的状态信息，
+		其他人和 controller 可以通过检查这些状态信息以确定 Job 完成和健康状况。
 	*/
 	isJobFinished := func(job *kbatch.Job) (bool, kbatch.JobConditionType) {
 		for _, c := range job.Status.Conditions {
@@ -213,8 +213,8 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	}
 
 	/*  在这里，我们将以略高的日志记录级别记录观察到的 Job 数量，以进行调试。
-	请注意，我们是使用固定消息在键值对中附加额外的信息，而不是使用字符串格式。
-	这样可以更轻松地过滤和查询日志行。
+		请注意，我们是使用固定消息在键值对中附加额外的信息，而不是使用字符串格式。
+		这样可以更轻松地过滤和查询日志行。
 	*/
 	log.V(1).Info("job count", "active jobs", len(activeJobs), "successful jobs", len(successfulJobs), "failed jobs", len(failedJobs))
 
@@ -298,14 +298,14 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	*/
 
 	/*
-			我们将使用有用的 cron 库来计算下一个 scheduled 时间。
-			我们将从上次 Job 开始的时间计算下一次运行的时间，如果找不到上次运行的时间，就创建一个 CronJob。
+		我们将使用有用的 cron 库来计算下一个 scheduled 时间。
+		我们将从上次 Job 开始的时间计算下一次运行的时间，如果找不到上次运行的时间，就创建一个 CronJob。
 
-			如果错过的 Job 数量太多，并且我们没有设置任何 deadlines，我们将释放这个 Job，
-		    以免造成 controller 重启。
+		如果错过的 Job 数量太多，并且我们没有设置任何 deadlines，我们将释放这个 Job，
+	    以免造成 controller 重启。
 
-			否则，我们将只返回错过的 Job（我们将使用最后一个运行的 Job）和下一次要运行的 Job，
-			以便让我们知道何时该重新进行 reconcile。
+		否则，我们将只返回错过的 Job（我们将使用最后一个运行的 Job）和下一次要运行的 Job，
+		以便让我们知道何时该重新进行 reconcile。
 	*/
 	getNextSchedule := func(cronJob *batch.CronJob, now time.Time) (lastMissed time.Time, next time.Time, err error) {
 		sched, err := cron.ParseStandard(cronJob.Spec.Schedule)
