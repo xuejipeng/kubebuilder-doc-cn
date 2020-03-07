@@ -1,8 +1,9 @@
 [book]
-authors = [""]
+authors = ["xuejipeng"]
 multilingual = false
 src = "src"
 title = "Kubebuilder 中文文档"
+git-repository-url = "https://github.com/xuejipeng/kubebuilder-doc-cn"
 
 [output.html]
 google-analytics = "UA-119864590-1"
