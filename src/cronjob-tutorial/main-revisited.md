@@ -1,7 +1,7 @@
 # main 文件修改什么?
 
 还记得最开始我们说要[回到  `main.go`
-文件](/cronjob-tutorial/empty-main.md)么? 让我们看看 `main.go` 新增了什么。
+文件](./empty-main.md)么? 让我们看看 `main.go` 新增了什么。
 
 {{#literatego ./testdata/project/main.go}}
 
