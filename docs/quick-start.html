@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>快速入门 - Kubebuilder 中文文档</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="introduction.html">引言</a></li><li class="expanded affix "><a href="quick-start.html" class="active">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="cronjob-tutorial/controller-implementation.html"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="cronjob-tutorial/webhook-implementation.html"><strong aria-hidden="true">1.8.</strong> Implementing defaulting/validating webhooks</a></li><li class="expanded "><a href="cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> Running and deploying the controller</a></li><li><ol class="section"><li class="expanded "><a href="cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> Deploying the cert manager</a></li><li class="expanded "><a href="cronjob-tutorial/running-webhook.html"><strong aria-hidden="true">1.9.2.</strong> Deploying webhooks</a></li></ol></li><li class="expanded "><a href="cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> Epilogue</a></li></ol></li><li class="expanded "><a href="multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="migration/guide.html"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="TODO.html">Appendix: The TODO Landing Page</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Kubebuilder 中文文档</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#快速开始" id="快速开始">快速开始</a></h1>
+<p>这个 Quick Start 指南包括:</p>
+<ul>
+<li><a href="#create-a-project">如何创建一个 project</a></li>
+<li><a href="#create-an-api">如何创建一个 API</a></li>
+<li><a href="#test-it-out">如何在本地运行 operator</a></li>
+<li><a href="#run-it-on-the-cluster">如何在集群上运行 operator</a></li>
+</ul>
+<h2><a class="header" href="#环境准备" id="环境准备">环境准备</a></h2>
+<ul>
+<li><a href="https://golang.org/dl/">go</a> version v1.13+.</li>
+<li><a href="https://docs.docker.com/install/">docker</a> version 17.03+.</li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> version v1.11.3+.</li>
+<li><a href="https://sigs.k8s.io/kustomize/docs/INSTALL.md">kustomize</a> v3.1.0+</li>
+<li>Access to a Kubernetes v1.11.3+ cluster.</li>
+</ul>
+<p><span id="installation"></span></p>
+<h2><a class="header" href="#安装" id="安装">安装</a></h2>
+<p>安装 <a href="https://sigs.k8s.io/kubebuilder">kubebuilder</a>:</p>
+<pre><code class="language-bash">os=$(go env GOOS)
+arch=$(go env GOARCH)
+
+# download kubebuilder and extract it to tmp
+curl -L https://go.kubebuilder.io/dl/2.2.0/${os}/${arch} | tar -xz -C /tmp/
+
+# move to a long-term location and put it on your path
+# (you'll need to set the KUBEBUILDER_ASSETS env var if you put it somewhere else)
+sudo mv /tmp/kubebuilder_2.2.0_${os}_${arch} /usr/local/kubebuilder
+export PATH=$PATH:/usr/local/kubebuilder/bin
+</code></pre>
+<aside class="note">
+<h1><a class="header" href="#使用最新版本" id="使用最新版本">使用最新版本</a></h1>
+<p>可以使用以下链接获取到最新版本 <code>https://go.kubebuilder.io/dl/latest/${os}/${arch}</code>.</p>
+</aside>
+<p><span id="create-a-project"></span></p>
+<h2><a class="header" href="#创建一个-project" id="创建一个-project">创建一个 Project</a></h2>
+<p>创建一个目录，然后运行 init 命令以初始化新项目</p>
+<pre><code class="language-bash">mkdir $GOPATH/src/example
+cd $GOPATH/src/example
+kubebuilder init --domain my.domain
+</code></pre>
+<aside class="note">
+<h1><a class="header" href="#项目不在-gopath-下" id="项目不在-gopath-下">项目不在 $GOPATH 下</a></h1>
+<p>如果创建的项目不在<code>GOPATH</code>中，为了让 kubebuilder 和 Go 识别导入路径，需要运行 <code>go mod init &lt;modulename&gt;</code></p>
+<p>对于 <code>GOPATH</code> 的解释可以参考 <a href="https://golang.org/doc/code.html">How to Write Go Code</a> 中的 <a href="https://golang.org/doc/code.html#GOPATH">The GOPATH environment variable</a> </p>
+</aside>
+<aside class="note">
+<h1><a class="header" href="#go-package-问题" id="go-package-问题">Go package 问题</a></h1>
+<p>如果报错 <code>cannot find package ... (from $GOROOT)</code> 请执行<code>$ export GO111MODULE=on</code> 开启 Go module 模式。</p>
+</aside>
+<p><span id="create-an-api"></span></p>
+<h2><a class="header" href="#创建一个-api" id="创建一个-api">创建一个 API</a></h2>
+<p>运行以下命令创建一个新的 API(group/version) --&gt;<code>webapp/v1</code>, 并在此 API 上创建一个新的 Kind(CRD) --&gt; <code>Guestbook </code></p>
+<!--Run the following command to create a new API (group/version) as `webapp/v1` and the new Kind(CRD) `Guestbook` on it:
+-->
+<pre><code class="language-bash">kubebuilder create api --group webapp --version v1 --kind Guestbook
+</code></pre>
+<aside class="note">
+<h1><a class="header" href="#选项说明" id="选项说明">选项说明</a></h1>
+<p><code>Create Resource [y/n]：y</code> 创建文件<code>api/v1/guestbook_types.go</code>，此文件用来定义 API</p>
+<p><code>Create Controller [y/n]：y</code> 创建文件 <code>controller/guestbook_controller.go</code>，此文件用来编写实现 Kind(CRD) 的业务逻辑</p>
+</aside>
+<p><strong>备注:</strong> 对于如何设计 API 和如何实现业务逻辑可以参考 <a href="/cronjob-tutorial/api-design.html">Designing an API</a> 和 <a href="cronjob-tutorial/controller-overview.html">What’s in
+a Controller</a>.</p>
+<details><summary>查看示例 `(api/v1/guestbook_types.go)` </summary>
+<p>
+<pre><code class="language-go">// GuestbookSpec defines the desired state of Guestbook
+type GuestbookSpec struct {
+	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+	// Important: Run &quot;make&quot; to regenerate code after modifying this file
+
+	// Quantity of instances
+	// +kubebuilder:validation:Minimum=1
+	// +kubebuilder:validation:Maximum=10
+	Size int32 `json:&quot;size&quot;`
+
+	// Name of the ConfigMap for GuestbookSpec's configuration
+	// +kubebuilder:validation:MaxLength=15
+	// +kubebuilder:validation:MinLength=1
+	ConfigMapName string `json:&quot;configMapName&quot;`
+
+	// +kubebuilder:validation:Enum=Phone;Address;Name
+	Type string `json:&quot;alias,omitempty&quot;`
+}
+
+// GuestbookStatus defines the observed state of Guestbook
+type GuestbookStatus struct {
+	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+	// Important: Run &quot;make&quot; to regenerate code after modifying this file
+
+	// PodName of the active Guestbook node.
+	Active string `json:&quot;active&quot;`
+
+	// PodNames of the standby Guestbook nodes.
+	Standby []string `json:&quot;standby&quot;`
+}
+
+type Guestbook struct {
+	metav1.TypeMeta   `json:&quot;,inline&quot;`
+	metav1.ObjectMeta `json:&quot;metadata,omitempty&quot;`
+
+	Spec   GuestbookSpec   `json:&quot;spec,omitempty&quot;`
+	Status GuestbookStatus `json:&quot;status,omitempty&quot;`
+}
+</code></pre>
+</p>
+</details>
+<p><span id="test-it-out"></span></p>
+<h2><a class="header" href="#在本地运行-operator" id="在本地运行-operator">在本地运行 operator</a></h2>
+<p>你需要一个 Kubernetes 测试集群来进行测试，你可以使用 <a href="https://sigs.k8s.io/kind">KIND</a> 来启动一个本地或者远程的测试集群</p>
+<aside class="note">
+<h1><a class="header" href="#context-使用" id="context-使用">Context 使用</a></h1>
+<p>Controller 会自动使用你当前 context 中的 kubeconfig 文件操作 kubernetes 集群(即：<code>kubectl cluster-info</code> 显示的集群)</p>
+</aside> 
+<p>在集群中安装 CRDs</p>
+<pre><code class="language-bash">make install
+</code></pre>
+<p>运行 controller (这个命令不会再后台运行 controller，所以建议新建一个 terminal 运行以下命令)</p>
+<pre><code class="language-bash">make run
+</code></pre>
+<h2><a class="header" href="#安装-custom-resources-实例" id="安装-custom-resources-实例">安装 Custom Resources 实例</a></h2>
+<p>创建 Project时，对于 <code>Create Resource [y/n]</code>，如果你选择 <code>y</code>, 将会在 <code>config/samples/</code> 目录中为你的 CRD 创建一个 CR 文件 xxx.yaml (如果你修改了 API 定义文件(api/v1/guestbook_types.go)，请务必修改此文件)</p>
+<pre><code class="language-bash">kubectl apply -f config/samples/
+</code></pre>
+<p><span id="run-it-on-the-cluster"></span></p>
+<h2><a class="header" href="#在集群上运行-operator" id="在集群上运行-operator">在集群上运行 operator</a></h2>
+<p>Build 并 Push 镜像 <code>IMG</code>:</p>
+<pre><code class="language-bash">make docker-build docker-push IMG=&lt;some-registry&gt;/&lt;project-name&gt;:tag
+</code></pre>
+<p>使用指定镜像<code>IMG</code>将 operator 部署到集群中:</p>
+<pre><code class="language-bash">make deploy IMG=&lt;some-registry&gt;/&lt;project-name&gt;:tag
+</code></pre>
+<aside class="note">
+<h1><a class="header" href="#rbac-errors" id="rbac-errors">RBAC errors</a></h1>
+<p>如果你遇到 RBAC 相关错误，你需要使用 cluster-admin 权限或者使用 admin 登录，可以参考 <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#iam-rolebinding-bootstrap">Prerequisites for using Kubernetes RBAC on GKE cluster v1.11.x and older</a></p>
+</aside> 
+<h2><a class="header" href="#卸载-crds" id="卸载-crds">卸载 CRDs</a></h2>
+<p>从集群中删除 CRDs：</p>
+<pre><code class="language-bash">make uninstall
+</code></pre>
+<h2><a class="header" href="#下一步" id="下一步">下一步</a></h2>
+<p>现在，请继续学习 <a href="https://book.kubebuilder.io/cronjob-tutorial/cronjob-tutorial.html">CronJob tutorial</a> 教程，通过开发演示示例项目更好地了解其工作原理。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="cronjob-tutorial/cronjob-tutorial.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="cronjob-tutorial/cronjob-tutorial.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-119864590-1', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

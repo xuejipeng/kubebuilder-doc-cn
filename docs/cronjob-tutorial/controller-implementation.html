@@ -1,0 +1,759 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>实现一个 controller - Kubebuilder 中文文档</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="../introduction.html">引言</a></li><li class="expanded affix "><a href="../quick-start.html">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="../cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="../cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="../cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="../cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/controller-implementation.html" class="active"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/webhook-implementation.html"><strong aria-hidden="true">1.8.</strong> Implementing defaulting/validating webhooks</a></li><li class="expanded "><a href="../cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> Running and deploying the controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> Deploying the cert manager</a></li><li class="expanded "><a href="../cronjob-tutorial/running-webhook.html"><strong aria-hidden="true">1.9.2.</strong> Deploying webhooks</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> Epilogue</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="../migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="../migration/guide.html"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="../migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="../reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="../reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="../reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="../reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="../reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="../reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="../reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="../reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="../reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="../reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="../reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="../reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="../reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="../reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="../reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="../reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="../reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="../reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../TODO.html">Appendix: The TODO Landing Page</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Kubebuilder 中文文档</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#实现一个-controller" id="实现一个-controller">实现一个 controller</a></h1>
+<p>我们的 CronJob controller 的基本逻辑是：</p>
+<ol>
+<li>
+<p>加载 CronJob</p>
+</li>
+<li>
+<p>列出所有 active jobs，并更新状态</p>
+</li>
+<li>
+<p>根据历史记录清理 old jobs</p>
+</li>
+<li>
+<p>检查 Job 是否已被 suspended（如果被 suspended，请不要执行任何操作）</p>
+</li>
+<li>
+<p>获取到下一次要 schedule 的 Job</p>
+</li>
+<li>
+<p>运行新的 Job, 确定新 Job 没有超过 deadline 时间，且不会被我们 concurrency 规则 block</p>
+</li>
+<li>
+<p>如果 Job 正在运行或者它应该下次运行，请重新排队</p>
+</li>
+</ol>
+<div class="literate"><cite class="literate-source"><a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/controllers/cronjob_controller.go">project/controllers/cronjob_controller.go</a></cite><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Apache License</span></pre></summary>
+<p>Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</details>
+<p>我们从一些 import 开始，正如你看到的，我们使用的 package 比脚手架帮我们生成的多，在使用它们时，我们会逐一讨论。</p>
+<pre><code class="language-go">package controllers
+
+import (
+	&quot;context&quot;
+	&quot;fmt&quot;
+	&quot;sort&quot;
+	&quot;time&quot;
+
+	&quot;github.com/go-logr/logr&quot;
+	&quot;github.com/robfig/cron&quot;
+	kbatch &quot;k8s.io/api/batch/v1&quot;
+	corev1 &quot;k8s.io/api/core/v1&quot;
+	metav1 &quot;k8s.io/apimachinery/pkg/apis/meta/v1&quot;
+	&quot;k8s.io/apimachinery/pkg/runtime&quot;
+	ref &quot;k8s.io/client-go/tools/reference&quot;
+	ctrl &quot;sigs.k8s.io/controller-runtime&quot;
+	&quot;sigs.k8s.io/controller-runtime/pkg/client&quot;
+
+	batch &quot;tutorial.kubebuilder.io/project/api/v1&quot;
+)
+</code></pre>
+<p>接下来，我们需要一个 Clock 字段，它帮我们在测试中伪装计时。</p>
+<pre><code class="language-go">// CronJobReconciler reconciles a CronJob object
+type CronJobReconciler struct {
+	client.Client
+	Log    logr.Logger
+	Scheme *runtime.Scheme
+	Clock
+}
+</code></pre>
+<details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Clock</span></pre></summary>
+<p>我们模拟时钟，以便在测试时更容易跳转，
+<code>realClock</code> 只是调用了 <code>time.Now</code> 函数。</p>
+<pre><code class="language-go">type realClock struct{}
+
+func (_ realClock) Now() time.Time { return time.Now() }
+
+// clock 知道如何获取当前时间
+//它可以用来在测试时伪造时间。
+type Clock interface {
+	Now() time.Time
+}
+</code></pre>
+</details>
+<p>请注意，我们需要更多的 RBAC 权限 -- 由于我们现在正在创建和管理 Job，因此我们需要这些权限，
+这意味着要添加更多 <a href="/reference/markers/rbac.html">markers</a>，所以我们增加了最下面两行。</p>
+<pre><code class="language-go">// +kubebuilder:rbac:groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=batch.tutorial.kubebuilder.io,resources=cronjobs/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=batch,resources=jobs,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=batch,resources=jobs/status,verbs=get
+</code></pre>
+<p>现在， 我们到了 controller 的核心部分 -- 实现 reconciler 的逻辑</p>
+<pre><code class="language-go">var (
+	scheduledTimeAnnotation = &quot;batch.tutorial.kubebuilder.io/scheduled-at&quot;
+)
+
+func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
+	ctx := context.Background()
+	log := r.Log.WithValues(&quot;cronjob&quot;, req.NamespacedName)
+</code></pre>
+<pre><code>### 1: 按 namespace 加载 CronJob
+
+我们使用 client 获取 CronJob。
+所有的 client 方法都将 context（用来取消请求）作为其第一个参数，
+并将所讨论的 object 作为其最后一个参数。 Get 方法有点特殊，
+因为它使用 [`NamespacedName`](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/client#ObjectKey)
+作为中间参数（大多数没有中间参数，如下所示）。
+
+最后，许多 client 方法也采用可变参数选项(也就是 &quot;...&quot;)。
+</code></pre>
+<pre><code class="language-go">	var cronJob batch.CronJob
+	if err := r.Get(ctx, req.NamespacedName, &amp;cronJob); err != nil {
+		log.Error(err, &quot;unable to fetch CronJob&quot;)
+		// we'll ignore not-found errors, since they can't be fixed by an immediate
+		// requeue (we'll need to wait for a new notification), and we can get them
+		// on deleted requests.
+		return ctrl.Result{}, client.IgnoreNotFound(err)
+	}
+</code></pre>
+<pre><code>### 2: 列出所有 active jobs，并更新状态
+要完全更新我们的状态，我们需要列出此 namespace 中属于此 CronJob 的所有 Job。
+与 Get 方法类似，我们可以使用 List 方法列出 Job。
+注意，我们使用可变参数选项来设置 `client.InNamespace` 和 `client.MatchingFields`。
+</code></pre>
+<pre><code class="language-go">	var childJobs kbatch.JobList
+	if err := r.List(ctx, &amp;childJobs, client.InNamespace(req.Namespace), client.MatchingFields{jobOwnerKey: req.Name}); err != nil {
+		log.Error(err, &quot;unable to list child Jobs&quot;)
+		return ctrl.Result{}, err
+	}
+</code></pre>
+<pre><code>当得到所有的 Job 后，我们把 Job 的状态分为 active、successful和 failed,
+并跟踪他们最近的运行情况，以便将其记录在 status 中。
+请记住，status 应该可以从整体的状态重新构造，
+因此从 root object 的状态读取信息通常不是一个好主意。
+相反，您应该在每次运行时重新构建它。
+这就是我们在这里要做的。
+
+我们可以使用 status conditions 来检查作业是“完成”、成功或失败。
+我们将把这种逻辑放在匿名函数中，以使我们的代码更整洁。
+</code></pre>
+<pre><code class="language-go">	// 查找状态为 active 的 Jobs
+	var activeJobs []*kbatch.Job
+	var successfulJobs []*kbatch.Job
+	var failedJobs []*kbatch.Job
+	var mostRecentTime *time.Time // 找到最后一次运行 Job，以便我们更新状态
+</code></pre>
+<details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">isJobFinished</span></pre></summary>
+<pre><code>如果一项工作的 &quot;succeeded&quot; 或 &quot;failed&quot; 的 Conditions 标记为 &quot;true&quot;，我们认为该工作 &quot;finished&quot;。
+`Status.conditions` 使我们可以向 objects 添加可扩展的状态信息，
+其他人和 controller 可以通过检查这些状态信息以确定 Job 完成和健康状况。
+</code></pre>
+<pre><code class="language-go">	isJobFinished := func(job *kbatch.Job) (bool, kbatch.JobConditionType) {
+		for _, c := range job.Status.Conditions {
+			if (c.Type == kbatch.JobComplete || c.Type == kbatch.JobFailed) &amp;&amp; c.Status == corev1.ConditionTrue {
+				return true, c.Type
+			}
+		}
+
+		return false, &quot;&quot;
+	}
+</code></pre>
+</details><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">getScheduledTimeForJob</span></pre></summary>
+<p>我们将使用匿名函数从创建 Job 时添加的 annotation 中获取到 Job 计划执行的时间。</p>
+<pre><code class="language-go">	getScheduledTimeForJob := func(job *kbatch.Job) (*time.Time, error) {
+		timeRaw := job.Annotations[scheduledTimeAnnotation]
+		if len(timeRaw) == 0 {
+			return nil, nil
+		}
+
+		timeParsed, err := time.Parse(time.RFC3339, timeRaw)
+		if err != nil {
+			return nil, err
+		}
+		return &amp;timeParsed, nil
+	}
+</code></pre>
+</details>
+<pre><code class="language-go">	// 根据 Job 的状态将 Job 放到不同的切片中, 并获得最近一个 Job
+	for i, job := range childJobs.Items {
+		_, finishedType := isJobFinished(&amp;job)
+		switch finishedType {
+		case &quot;&quot;: // ongoing
+			activeJobs = append(activeJobs, &amp;childJobs.Items[i])
+		case kbatch.JobFailed:
+			failedJobs = append(failedJobs, &amp;childJobs.Items[i])
+		case kbatch.JobComplete:
+			successfulJobs = append(successfulJobs, &amp;childJobs.Items[i])
+		}
+
+		// 把运行时间存在 annotation，以便我们重新获取他们
+		scheduledTimeForJob, err := getScheduledTimeForJob(&amp;job)
+		if err != nil {
+			log.Error(err, &quot;unable to parse schedule time for child job&quot;, &quot;job&quot;, &amp;job)
+			continue
+		}
+		// 获取最后一个 Job
+		if scheduledTimeForJob != nil {
+			if mostRecentTime == nil {
+				mostRecentTime = scheduledTimeForJob
+			} else if mostRecentTime.Before(*scheduledTimeForJob) {
+				mostRecentTime = scheduledTimeForJob
+			}
+		}
+	}
+
+	if mostRecentTime != nil {
+		cronJob.Status.LastScheduleTime = &amp;metav1.Time{Time: *mostRecentTime}
+	} else {
+		cronJob.Status.LastScheduleTime = nil
+	}
+	cronJob.Status.Active = nil
+	for _, activeJob := range activeJobs {
+		jobRef, err := ref.GetReference(r.Scheme, activeJob)
+		if err != nil {
+			log.Error(err, &quot;unable to make reference to active job&quot;, &quot;job&quot;, activeJob)
+			continue
+		}
+		cronJob.Status.Active = append(cronJob.Status.Active, *jobRef)
+	}
+</code></pre>
+<p>在这里，我们将以略高的日志记录级别记录观察到的 Job 数量，以进行调试。
+请注意，我们是使用固定消息在键值对中附加额外的信息，而不是使用字符串格式。
+这样可以更轻松地过滤和查询日志行。</p>
+<pre><code class="language-go">	log.V(1).Info(&quot;job count&quot;, &quot;active jobs&quot;, len(activeJobs), &quot;successful jobs&quot;, len(successfulJobs), &quot;failed jobs&quot;, len(failedJobs))
+</code></pre>
+<p>我们根据我们得到的时间更新 CRD 的状态。
+和以前一样，我们使用 client。
+为了更新 subresource 的状态，我们将使用 client 的 <code>Status().Update</code> 方法</p>
+<p>subresource status 会忽略对 spec 的更改,
+因此它与其他任何 update 发生冲突的可能性较小, 并且它可以具有单独的权限。</p>
+<pre><code class="language-go">	if err := r.Status().Update(ctx, &amp;cronJob); err != nil {
+		log.Error(err, &quot;unable to update CronJob status&quot;)
+		return ctrl.Result{}, err
+	}
+</code></pre>
+<p>一旦我们正确 update 了我们的 status，我们可以确保整体的状态是符合我们在 spec 中指定的。</p>
+<h3><a class="header" href="#3-根据历史记录清理过期-jobs" id="3-根据历史记录清理过期-jobs">3: 根据历史记录清理过期 jobs</a></h3>
+<p>首先，我们会尝试清理过期的 jobs，以免留下太多闲杂事。</p>
+<pre><code class="language-go">	// 注意：这里是尽量删除，如果删除失败，我们不会为了删除让它们重新排队
+	if cronJob.Spec.FailedJobsHistoryLimit != nil {
+		// 把失败的 Job 按时间排序
+		sort.Slice(failedJobs, func(i, j int) bool {
+			if failedJobs[i].Status.StartTime == nil {
+				return failedJobs[j].Status.StartTime != nil
+			}
+			return failedJobs[i].Status.StartTime.Before(failedJobs[j].Status.StartTime)
+		})
+		// 如果 failedJob 超出 FailedJobsHistoryLimit 就删掉
+		for i, job := range failedJobs {
+			if int32(i) &gt;= int32(len(failedJobs))-*cronJob.Spec.FailedJobsHistoryLimit {
+				break
+			}
+			if err := r.Delete(ctx, job, client.PropagationPolicy(metav1.DeletePropagationBackground)); client.IgnoreNotFound(err) != nil {
+				log.Error(err, &quot;unable to delete old failed job&quot;, &quot;job&quot;, job)
+			} else {
+				log.V(0).Info(&quot;deleted old failed job&quot;, &quot;job&quot;, job)
+			}
+		}
+	}
+	// 如果 successfulJob 超出 SuccessfulJobsHistoryLimit 就删掉
+	if cronJob.Spec.SuccessfulJobsHistoryLimit != nil {
+		sort.Slice(successfulJobs, func(i, j int) bool {
+			if successfulJobs[i].Status.StartTime == nil {
+				return successfulJobs[j].Status.StartTime != nil
+			}
+			return successfulJobs[i].Status.StartTime.Before(successfulJobs[j].Status.StartTime)
+		})
+		for i, job := range successfulJobs {
+			if int32(i) &gt;= int32(len(successfulJobs))-*cronJob.Spec.SuccessfulJobsHistoryLimit {
+				break
+			}
+			if err := r.Delete(ctx, job, client.PropagationPolicy(metav1.DeletePropagationBackground)); (err) != nil {
+				log.Error(err, &quot;unable to delete old successful job&quot;, &quot;job&quot;, job)
+			} else {
+				log.V(0).Info(&quot;deleted old successful job&quot;, &quot;job&quot;, job)
+			}
+		}
+	}
+</code></pre>
+<h3><a class="header" href="#4-检查-job-是否已被-suspended" id="4-检查-job-是否已被-suspended">4: 检查 Job 是否已被 suspended</a></h3>
+<p>如果这个 object 已被 suspended，且我们不想运行任何其他 Jobs，我们会立即 return。
+这对调试 Job 的问题非常有用。</p>
+<pre><code class="language-go">	if cronJob.Spec.Suspend != nil &amp;&amp; *cronJob.Spec.Suspend {
+		log.V(1).Info(&quot;cronjob suspended, skipping&quot;)
+		return ctrl.Result{}, nil
+	}
+</code></pre>
+<h3><a class="header" href="#5-获取到下一次要-schedule-的-job" id="5-获取到下一次要-schedule-的-job">5: 获取到下一次要 schedule 的 Job</a></h3>
+<p>如果 Job 没有被暂停，则需要计算下一次 schedule 的 Job，以及是否有尚未处理的 Job。</p>
+<details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">getNextSchedule</span></pre></summary>
+<pre><code>我们将使用有用的 cron 库来计算下一个 scheduled 时间。
+我们将从上次 Job 开始的时间计算下一次运行的时间，如果找不到上次运行的时间，就创建一个 CronJob。
+
+如果错过的 Job 数量太多，并且我们没有设置任何 deadlines，我们将释放这个 Job，
+以免造成 controller 重启。
+
+否则，我们将只返回错过的 Job（我们将使用最后一个运行的 Job）和下一次要运行的 Job，
+以便让我们知道何时该重新进行 reconcile。
+</code></pre>
+<pre><code class="language-go">	getNextSchedule := func(cronJob *batch.CronJob, now time.Time) (lastMissed time.Time, next time.Time, err error) {
+		sched, err := cron.ParseStandard(cronJob.Spec.Schedule)
+		if err != nil {
+			return time.Time{}, time.Time{}, fmt.Errorf(&quot;Unparseable schedule %q: %v&quot;, cronJob.Spec.Schedule, err)
+		}
+
+		// for optimization purposes, cheat a bit and start from our last observed run time
+		// we could reconstitute this here, but there's not much point, since we've
+		// just updated it.
+		var earliestTime time.Time
+		if cronJob.Status.LastScheduleTime != nil {
+			earliestTime = cronJob.Status.LastScheduleTime.Time
+		} else {
+			earliestTime = cronJob.ObjectMeta.CreationTimestamp.Time
+		}
+		if cronJob.Spec.StartingDeadlineSeconds != nil {
+			// controller is not going to schedule anything below this point
+			schedulingDeadline := now.Add(-time.Second * time.Duration(*cronJob.Spec.StartingDeadlineSeconds))
+
+			if schedulingDeadline.After(earliestTime) {
+				earliestTime = schedulingDeadline
+			}
+		}
+		if earliestTime.After(now) {
+			return time.Time{}, sched.Next(now), nil
+		}
+
+		starts := 0
+		for t := sched.Next(earliestTime); !t.After(now); t = sched.Next(t) {
+			lastMissed = t
+			// An object might miss several starts. For example, if
+			// controller gets wedged on Friday at 5:01pm when everyone has
+			// gone home, and someone comes in on Tuesday AM and discovers
+			// the problem and restarts the controller, then all the hourly
+			// jobs, more than 80 of them for one hourly scheduledJob, should
+			// all start running with no further intervention (if the scheduledJob
+			// allows concurrency and late starts).
+			//
+			// However, if there is a bug somewhere, or incorrect clock
+			// on controller's server or apiservers (for setting creationTimestamp)
+			// then there could be so many missed start times (it could be off
+			// by decades or more), that it would eat up all the CPU and memory
+			// of this controller. In that case, we want to not try to list
+			// all the missed start times.
+			starts++
+			if starts &gt; 100 {
+				// We can't get the most recent times so just return an empty slice
+				return time.Time{}, time.Time{}, fmt.Errorf(&quot;Too many missed start times (&gt; 100). Set or decrease .spec.startingDeadlineSeconds or check clock skew.&quot;)
+			}
+		}
+		return lastMissed, sched.Next(now), nil
+	}
+</code></pre>
+</details>
+<pre><code class="language-go">	// figure out the next times that we need to create
+	// jobs at (or anything we missed).
+	missedRun, nextRun, err := getNextSchedule(&amp;cronJob, r.Now())
+	if err != nil {
+		log.Error(err, &quot;unable to figure out CronJob schedule&quot;)
+		// we don't really care about requeuing until we get an update that
+		// fixes the schedule, so don't return an error
+		return ctrl.Result{}, nil
+	}
+</code></pre>
+<p>我们把下次执行 Job 的 object 存到 scheduledResult 变量中，知道下次需要需要执行的时间点，然后确定 Job 是否真的需要运行。</p>
+<pre><code class="language-go">	scheduledResult := ctrl.Result{RequeueAfter: nextRun.Sub(r.Now())} // save this so we can re-use it elsewhere
+	log = log.WithValues(&quot;now&quot;, r.Now(), &quot;next run&quot;, nextRun)
+</code></pre>
+<h3><a class="header" href="#6-运行新的-job-确定新-job-没有超过-deadline-时间且不会被我们-concurrency-规则-block" id="6-运行新的-job-确定新-job-没有超过-deadline-时间且不会被我们-concurrency-规则-block">6: 运行新的 Job, 确定新 Job 没有超过 deadline 时间，且不会被我们 concurrency 规则 block</a></h3>
+<p>如果我们错过了一个 Job 的运行时间点，但是 Job 还在 deadline 时间内，我们需要再次运行这个 Job</p>
+<pre><code class="language-go">	if missedRun.IsZero() {
+		log.V(1).Info(&quot;no upcoming scheduled times, sleeping until next&quot;)
+		return scheduledResult, nil
+	}
+
+	// 确地没有超过 StartingDeadlineSeconds 时间
+	log = log.WithValues(&quot;current run&quot;, missedRun)
+	tooLate := false
+	if cronJob.Spec.StartingDeadlineSeconds != nil {
+		tooLate = missedRun.Add(time.Duration(*cronJob.Spec.StartingDeadlineSeconds) * time.Second).Before(r.Now())
+	}
+	if tooLate {
+		log.V(1).Info(&quot;missed starting deadline for last run, sleeping till next&quot;)
+		// TODO(directxman12): events
+		return scheduledResult, nil
+	}
+</code></pre>
+<p>如果我们不得不运行一个 Job，那么需要等现有 Job 完成之后，替换现有 Job 或添加一个新 Job。
+如果我们的信息由于 cache 的延迟而过时，那么我们将在获得 up-to-date 信息时重新排队。</p>
+<pre><code class="language-go">	// 判断如何运行此 Job -- 并发策略可能会禁止我们同时运行多个 Job
+	if cronJob.Spec.ConcurrencyPolicy == batch.ForbidConcurrent &amp;&amp; len(activeJobs) &gt; 0 {
+		log.V(1).Info(&quot;concurrency policy blocks concurrent runs, skipping&quot;, &quot;num active&quot;, len(activeJobs))
+		return scheduledResult, nil
+	}
+
+	// ...或者希望我们替换一个 Job...
+	if cronJob.Spec.ConcurrencyPolicy == batch.ReplaceConcurrent {
+		for _, activeJob := range activeJobs {
+			// 我们不关心 Job 是否已经被删除
+			if err := r.Delete(ctx, activeJob, client.PropagationPolicy(metav1.DeletePropagationBackground)); client.IgnoreNotFound(err) != nil {
+				log.Error(err, &quot;unable to delete active job&quot;, &quot;job&quot;, activeJob)
+				return ctrl.Result{}, err
+			}
+		}
+	}
+</code></pre>
+<p>一旦弄清楚如何处理现有 Job，我们便会真正创建所需的 Job。</p>
+<details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">constructJobForCronJob</span></pre></summary>
+<p>我们需要基于 CronJob 的 template 构建 Job, 我们将从 template 复制 spec，然后复制一些基本的字段。</p>
+<p>然后，我们将设置 “scheduled time” annotation，
+以便我们可以在每次 reconcile 时重新构造我们的 <code>LastScheduleTime</code> 字段。</p>
+<p>最后，我们需要设置 owner reference。 这使 Kubernetes 垃圾收集器在删除 CronJob 时清理 Job，
+并允许 controller-runtime 找出给定 Job 被更改（added，deleted，completes）时需要协调哪个 CronJob。</p>
+<pre><code class="language-go">	constructJobForCronJob := func(cronJob *batch.CronJob, scheduledTime time.Time) (*kbatch.Job, error) {
+		// We want job names for a given nominal start time to have a deterministic name to avoid the same job being created twice
+		// 这里防止 Job 名称冲突
+		name := fmt.Sprintf(&quot;%s-%d&quot;, cronJob.Name, scheduledTime.Unix())
+
+		job := &amp;kbatch.Job{
+			ObjectMeta: metav1.ObjectMeta{
+				Labels:      make(map[string]string),
+				Annotations: make(map[string]string),
+				Name:        name,
+				Namespace:   cronJob.Namespace,
+			},
+			Spec: *cronJob.Spec.JobTemplate.Spec.DeepCopy(),
+		}
+		for k, v := range cronJob.Spec.JobTemplate.Annotations {
+			job.Annotations[k] = v
+		}
+		job.Annotations[scheduledTimeAnnotation] = scheduledTime.Format(time.RFC3339)
+		for k, v := range cronJob.Spec.JobTemplate.Labels {
+			job.Labels[k] = v
+		}
+		if err := ctrl.SetControllerReference(cronJob, job, r.Scheme); err != nil {
+			return nil, err
+		}
+
+		return job, nil
+	}
+</code></pre>
+</details>
+<pre><code class="language-go">	// actually make the job...
+	job, err := constructJobForCronJob(&amp;cronJob, missedRun)
+	if err != nil {
+		log.Error(err, &quot;unable to construct job from template&quot;)
+		// don't bother requeuing until we get a change to the spec
+		return scheduledResult, nil
+	}
+
+	// 在 k8s 集群上启动一个 Job Resource
+	if err := r.Create(ctx, job); err != nil {
+		log.Error(err, &quot;unable to create Job for CronJob&quot;, &quot;job&quot;, job)
+		return ctrl.Result{}, err
+	}
+
+	log.V(1).Info(&quot;created Job for CronJob run&quot;, &quot;job&quot;, job)
+</code></pre>
+<h3><a class="header" href="#7-如果-job-正在运行或者它应该下次运行请重新排队" id="7-如果-job-正在运行或者它应该下次运行请重新排队">7: 如果 Job 正在运行或者它应该下次运行，请重新排队</a></h3>
+<p>最后，我们将返回上面准备的结果，这表示我们想在下次运行的 Job 需要重新排队时使用。
+这被视为 maximum deadline -- 如果两者之间有其他变化，例如我们的 Job 开始或完成，
+或者我们得到一个修改信息，我们需要尽快 reconcile。</p>
+<pre><code class="language-go">	// 当 Job 运行的时候把下次需要运行的 Job object 放到队列中，并更新状态
+	return scheduledResult, nil
+}
+</code></pre>
+<h3><a class="header" href="#setup" id="setup">Setup</a></h3>
+<p>最后，我们将更新我们的设置。
+为了使我们的 reconciler 可以按其 owner 快速查找 Jobs，我们需要一个 index。
+我们声明一个 index key，以后可以与 client 一起使用它作为伪字段名称，然后描述如何从 Job 对象中提取 index key。
+索引器将自动为我们处理 namespace，因此，如果 Job 有一个 CronJob owner，我们只需提取所有者名称。</p>
+<p>此外，我们会通知 manager 该 controller 拥有一些 Jobs，
+以便在作业发生更改，删除等情况时，它将自动在基础 CronJob 上调用 Reconcile。</p>
+<pre><code class="language-go">var (
+	jobOwnerKey = &quot;.metadata.controller&quot;
+	apiGVStr    = batch.GroupVersion.String()
+)
+
+func (r *CronJobReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	// set up a real clock, since we're not in a test
+	if r.Clock == nil {
+		r.Clock = realClock{}
+	}
+
+	if err := mgr.GetFieldIndexer().IndexField(&amp;kbatch.Job{}, jobOwnerKey, func(rawObj runtime.Object) []string {
+		// grab the job object, extract the owner...
+		job := rawObj.(*kbatch.Job)
+		owner := metav1.GetControllerOf(job)
+		if owner == nil {
+			return nil
+		}
+		// ...make sure it's a CronJob...
+		if owner.APIVersion != apiGVStr || owner.Kind != &quot;CronJob&quot; {
+			return nil
+		}
+
+		// ...and if so, return it
+		return []string{owner.Name}
+	}); err != nil {
+		return err
+	}
+
+	return ctrl.NewControllerManagedBy(mgr).
+		For(&amp;batch.CronJob{}).
+		Owns(&amp;kbatch.Job{}).
+		Complete(r)
+}
+</code></pre>
+</div>
+<p>很明显，我们现在有了一个可以运行 controller ，让我们针对集群进行测试，然后，如果我们没有任何问题，把它部署到集群中！
+让我们针对集群进行测试，然后，如果我们没有任何问题，请对其进行部署！</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../cronjob-tutorial/controller-overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../cronjob-tutorial/main-revisited.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../cronjob-tutorial/controller-overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../cronjob-tutorial/main-revisited.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-119864590-1', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
