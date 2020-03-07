@@ -148,47 +148,42 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><strong>Note:</strong> Impatient readers may head straight to <a href="quick-start.html">Quick
+                        <p><strong>注意:</strong> 一些读者可能想直接去 <a href="quick-start.html">Quick
 Start</a>.</p>
-<p><strong>Using Kubebuilder v1? Check the <a href="https://book-v1.book.kubebuilder.io">legacy
-documentation</a></strong></p>
-<h2><a class="header" href="#who-is-this-for" id="who-is-this-for">Who is this for</a></h2>
-<h4><a class="header" href="#users-of-kubernetes" id="users-of-kubernetes">Users of Kubernetes</a></h4>
-<p>Users of Kubernetes will develop a deeper understanding of Kubernetes through learning
-the fundamental concepts behind how APIs are designed and implemented.  This book
-will teach readers how to develop their own Kubernetes APIs and the
-principles from which the core Kubernetes APIs are designed.</p>
-<p>Including:</p>
+<p><strong>如果正在使用 Kubebuilder v1, 请查看 <a href="https://book-v1.book.kubebuilder.io">Kubebuilder v1</a>。</strong></p>
+<p><strong>英文原版: <a href="https://book.kubebuilder.io/introduction.html">book.kubebuilder.io</a></strong></p>
+<h2><a class="header" href="#哪些人适合看这个文档" id="哪些人适合看这个文档">哪些人适合看这个文档</a></h2>
+<h4><a class="header" href="#kubernetes-的使用者" id="kubernetes-的使用者">Kubernetes 的使用者</a></h4>
+<p>Kubernetes 的使用者将通过学习 API 是如何设计和实现的，获得对 Kubernetes 更深入的了解。 本书将教读者如何开发自己的 Kubernetes API 以及实现 Kubernetes API 的核心原理。</p>
+<p>包括:</p>
 <ul>
-<li>The structure of Kubernetes APIs and Resources</li>
-<li>API versioning semantics</li>
-<li>Self-healing</li>
-<li>Garbage Collection and Finalizers</li>
-<li>Declarative vs Imperative APIs</li>
-<li>Level-Based vs Edge-Base APIs</li>
-<li>Resources vs Subresources</li>
+<li>如何构造 Kubernetes API 和 Resources</li>
+<li>如何进行 API 版本控制</li>
+<li>如何实现故障自愈</li>
+<li>如何实现垃圾回收和 Finalizers</li>
+<li>如何创建声明式和命令式 API</li>
+<li>如何创建 Level-Based API 和 Edge-Base API</li>
+<li>如何创建 Resources 和 Subresources</li>
 </ul>
 <h4><a class="header" href="#kubernetes-api-extension-developers" id="kubernetes-api-extension-developers">Kubernetes API extension developers</a></h4>
-<p>API extension developers will learn the principals and concepts behind implementing canonical
-Kubernetes APIs, as well as simple tools and libraries for rapid execution.  This
-book covers pitfalls and misconceptions that extension developers commonly encounter.</p>
-<p>Including:</p>
+<p>API extension developers 将学习实现标准的 Kubernetes API 的原理和概念，以及用于快速构建 API 的工具和库。本书涵盖了开发人员通常会遇到的陷阱和误解。</p>
+<p>包括:</p>
 <ul>
-<li>How to batch multiple events into a single reconciliation call</li>
-<li>How to configure periodic reconciliation</li>
-<li><em>Forthcoming</em>
+<li>如何用一个 reconciliation 方法处理多个 events</li>
+<li>如何定期执行 reconciliation 方法</li>
+<li><strong>将来会有</strong>
 <ul>
-<li>When to use the lister cache vs live lookups</li>
-<li>Garbage Collection vs Finalizers</li>
-<li>How to use Declarative vs Webhook Validation</li>
-<li>How to implement API versioning</li>
+<li>何时使用 lister cache 与 live lookups(实时查找)</li>
+<li>如何垃圾回收和 Finalizers</li>
+<li>如何使用 Declarative Validation 和 Webhook Validation</li>
+<li>如何实现 API 版本控制</li>
 </ul>
 </li>
 </ul>
-<h2><a class="header" href="#resources" id="resources">Resources</a></h2>
+<h2><a class="header" href="#相关资源" id="相关资源">相关资源</a></h2>
 <ul>
 <li>
-<p>Repository: <a href="https://sigs.k8s.io/kubebuilder">sigs.k8s.io/kubebuilder</a></p>
+<p>代码仓库: <a href="https://sigs.k8s.io/kubebuilder">sigs.k8s.io/kubebuilder</a></p>
 </li>
 <li>
 <p>Slack channel: <a href="http://slack.k8s.io/#kubebuilder">#kubebuilder</a></p>
@@ -228,21 +223,6 @@ book covers pitfalls and misconceptions that extension developers commonly encou
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

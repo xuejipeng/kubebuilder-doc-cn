@@ -149,7 +149,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#main-文件修改什么" id="main-文件修改什么">main 文件修改什么?</a></h1>
-<p>还记得最开始我们说要<a href="/cronjob-tutorial/empty-main.html">回到  <code>main.go</code>
+<p>还记得最开始我们说要<a href="./empty-main.html">回到  <code>main.go</code>
 文件</a>么? 让我们看看 <code>main.go</code> 新增了什么。</p>
 <div class="literate"><cite class="literate-source"><a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/main.go">project/main.go</a></cite><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Apache License</span></pre></summary>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
@@ -294,21 +294,6 @@ func init() {
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
