@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Implementing defaulting/validating webhooks - Kubebuilder 中文文档</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="../introduction.html">引言</a></li><li class="expanded affix "><a href="../quick-start.html">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="../cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="../cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="../cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="../cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/controller-implementation.html"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/webhook-implementation.html" class="active"><strong aria-hidden="true">1.8.</strong> Implementing defaulting/validating webhooks</a></li><li class="expanded "><a href="../cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> Running and deploying the controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> Deploying the cert manager</a></li><li class="expanded "><a href="../cronjob-tutorial/running-webhook.html"><strong aria-hidden="true">1.9.2.</strong> Deploying webhooks</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> Epilogue</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="../migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="../migration/guide.html"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="../migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="../reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="../reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="../reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="../reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="../reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="../reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="../reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="../reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="../reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="../reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="../reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="../reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="../reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="../reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="../reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="../reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="../reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="../reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../TODO.html">Appendix: The TODO Landing Page</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Kubebuilder 中文文档</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#implementing-defaultingvalidating-webhooks" id="implementing-defaultingvalidating-webhooks">Implementing defaulting/validating webhooks</a></h1>
+<p>If you want to implement <a href="../reference/admission-webhook.html">admission webhooks</a>
+for your CRD, the only thing you need to do is to implement the <code>Defaulter</code>
+and (or) the <code>Validator</code> interface.</p>
+<p>Kubebuilder takes care of the rest for you, such as</p>
+<ol>
+<li>Creating the webhook server.</li>
+<li>Ensuring the server has been added in the manager.</li>
+<li>Creating handlers for your webhooks.</li>
+<li>Registering each handler with a path in your server.</li>
+</ol>
+<p>First, let’s scaffold the webhooks for our CRD (CronJob). We’ll need to run the following command with the <code>--defaulting</code> and <code>--programmatic-validation</code> flags (since our test project will use defaulting and validating webhooks):</p>
+<pre><code class="language-bash">kubebuilder create webhook --group batch --version v1 --kind CronJob --defaulting --programmatic-validation
+</code></pre>
+<p>This will scaffold the webhook functions and register your webhook with the manager in your <code>main.go</code> for you.</p>
+<div class="literate"><cite class="literate-source"><a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/api/v1/cronjob_webhook.go">project/api/v1/cronjob_webhook.go</a></cite><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Apache License</span></pre></summary>
+<p>Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</details><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Go imports</span></pre></summary>
+<pre><code class="language-go">package v1
+
+import (
+	&quot;github.com/robfig/cron&quot;
+	apierrors &quot;k8s.io/apimachinery/pkg/api/errors&quot;
+	&quot;k8s.io/apimachinery/pkg/runtime&quot;
+	&quot;k8s.io/apimachinery/pkg/runtime/schema&quot;
+	validationutils &quot;k8s.io/apimachinery/pkg/util/validation&quot;
+	&quot;k8s.io/apimachinery/pkg/util/validation/field&quot;
+	ctrl &quot;sigs.k8s.io/controller-runtime&quot;
+	logf &quot;sigs.k8s.io/controller-runtime/pkg/runtime/log&quot;
+	&quot;sigs.k8s.io/controller-runtime/pkg/webhook&quot;
+)
+</code></pre>
+</details>
+<p>Next, we’ll setup a logger for the webhooks.</p>
+<pre><code class="language-go">var cronjoblog = logf.Log.WithName(&quot;cronjob-resource&quot;)
+</code></pre>
+<p>Then, we set up the webhook with the manager.</p>
+<pre><code class="language-go">func (r *CronJob) SetupWebhookWithManager(mgr ctrl.Manager) error {
+	return ctrl.NewWebhookManagedBy(mgr).
+		For(r).
+		Complete()
+}
+</code></pre>
+<p>Notice that we use kubebuilder markers to generate webhook manifests.
+This marker is responsible for generating a mutating webhook manifest.</p>
+<p>The meaning of each marker can be found <a href="/reference/markers/webhook.html">here</a>.</p>
+<pre><code class="language-go">// +kubebuilder:webhook:path=/mutate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=true,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=create;update,versions=v1,name=mcronjob.kb.io
+</code></pre>
+<p>We use the <code>webhook.Defaulter</code> interface to set defaults to our CRD.
+A webhook will automatically be served that calls this defaulting.</p>
+<p>The <code>Default</code> method is expected to mutate the receiver, setting the defaults.</p>
+<pre><code class="language-go">var _ webhook.Defaulter = &amp;CronJob{}
+
+// Default implements webhook.Defaulter so a webhook will be registered for the type
+func (r *CronJob) Default() {
+	cronjoblog.Info(&quot;default&quot;, &quot;name&quot;, r.Name)
+
+	if r.Spec.ConcurrencyPolicy == &quot;&quot; {
+		r.Spec.ConcurrencyPolicy = AllowConcurrent
+	}
+	if r.Spec.Suspend == nil {
+		r.Spec.Suspend = new(bool)
+	}
+	if r.Spec.SuccessfulJobsHistoryLimit == nil {
+		r.Spec.SuccessfulJobsHistoryLimit = new(int32)
+		*r.Spec.SuccessfulJobsHistoryLimit = 3
+	}
+	if r.Spec.FailedJobsHistoryLimit == nil {
+		r.Spec.FailedJobsHistoryLimit = new(int32)
+		*r.Spec.FailedJobsHistoryLimit = 1
+	}
+}
+</code></pre>
+<p>This marker is responsible for generating a validating webhook manifest.</p>
+<pre><code class="language-go">// TODO(user): change verbs to &quot;verbs=create;update;delete&quot; if you want to enable deletion validation.
+// +kubebuilder:webhook:verbs=create;update,path=/validate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=false,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,versions=v1,name=vcronjob.kb.io
+</code></pre>
+<p>To validate our CRD beyond what’s possible with declarative validation.
+Generally, declarative validation should be sufficient, but sometimes more
+advanced use cases call for complex validation.</p>
+<p>For instance, we’ll see below that we use this to validate a well-formed cron
+schedule without making up a long regular expression.</p>
+<p>If <code>webhook.Validator</code> interface is implemented, a webhook will automatically be
+served that calls the validation.</p>
+<p>The <code>ValidateCreate</code>, <code>ValidateUpdate</code> and <code>ValidateDelete</code> methods are expected
+to validate that its receiver upon creation, update and deletion respectively.
+We separate out ValidateCreate from ValidateUpdate to allow behavior like making
+certain fields immutable, so that they can only be set on creation.
+ValidateDelete is also separated from ValidateUpdate to allow different
+validation behavior on deletion.
+Here, however, we just use the same shared validation for <code>ValidateCreate</code> and
+<code>ValidateUpdate</code>. And we do nothing in <code>ValidateDelete</code>, since we don’t need to
+validate anything on deletion.</p>
+<pre><code class="language-go">var _ webhook.Validator = &amp;CronJob{}
+
+// ValidateCreate implements webhook.Validator so a webhook will be registered for the type
+func (r *CronJob) ValidateCreate() error {
+	cronjoblog.Info(&quot;validate create&quot;, &quot;name&quot;, r.Name)
+
+	return r.validateCronJob()
+}
+
+// ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
+func (r *CronJob) ValidateUpdate(old runtime.Object) error {
+	cronjoblog.Info(&quot;validate update&quot;, &quot;name&quot;, r.Name)
+
+	return r.validateCronJob()
+}
+
+// ValidateDelete implements webhook.Validator so a webhook will be registered for the type
+func (r *CronJob) ValidateDelete() error {
+	cronjoblog.Info(&quot;validate delete&quot;, &quot;name&quot;, r.Name)
+
+	// TODO(user): fill in your validation logic upon object deletion.
+	return nil
+}
+</code></pre>
+<p>We validate the name and the spec of the CronJob.</p>
+<pre><code class="language-go">func (r *CronJob) validateCronJob() error {
+	var allErrs field.ErrorList
+	if err := r.validateCronJobName(); err != nil {
+		allErrs = append(allErrs, err)
+	}
+	if err := r.validateCronJobSpec(); err != nil {
+		allErrs = append(allErrs, err)
+	}
+	if len(allErrs) == 0 {
+		return nil
+	}
+
+	return apierrors.NewInvalid(
+		schema.GroupKind{Group: &quot;batch.tutorial.kubebuilder.io&quot;, Kind: &quot;CronJob&quot;},
+		r.Name, allErrs)
+}
+</code></pre>
+<p>Some fields are declaratively validated by OpenAPI schema.
+You can find kubebuilder validation markers (prefixed
+with <code>// +kubebuilder:validation</code>) in the <a href="api-design.html">API</a>
+You can find all of the kubebuilder supported markers for
+declaring validation by running <code>controller-gen crd -w</code>,
+or <a href="/reference/markers/crd-validation.html">here</a>.</p>
+<pre><code class="language-go">func (r *CronJob) validateCronJobSpec() *field.Error {
+	// The field helpers from the kubernetes API machinery help us return nicely
+	// structured validation errors.
+	return validateScheduleFormat(
+		r.Spec.Schedule,
+		field.NewPath(&quot;spec&quot;).Child(&quot;schedule&quot;))
+}
+</code></pre>
+<p>We’ll need to validate the <a href="https://en.wikipedia.org/wiki/Cron">cron</a> schedule
+is well-formatted.</p>
+<pre><code class="language-go">func validateScheduleFormat(schedule string, fldPath *field.Path) *field.Error {
+	if _, err := cron.ParseStandard(schedule); err != nil {
+		return field.Invalid(fldPath, schedule, err.Error())
+	}
+	return nil
+}
+</code></pre>
+<details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Validate object name</span></pre></summary>
+<p>Validating the length of a string field can be done declaratively by
+the validation schema.</p>
+<p>But the <code>ObjectMeta.Name</code> field is defined in a shared package under
+the apimachinery repo, so we can’t declaratively validate it using
+the validation schema.</p>
+<pre><code class="language-go">func (r *CronJob) validateCronJobName() *field.Error {
+	if len(r.ObjectMeta.Name) &gt; validationutils.DNS1035LabelMaxLength-11 {
+		// The job name length is 63 character like all Kubernetes objects
+		// (which must fit in a DNS subdomain). The cronjob controller appends
+		// a 11-character suffix to the cronjob (`-$TIMESTAMP`) when creating
+		// a job. The job name length limit is 63 characters. Therefore cronjob
+		// names must have length &lt;= 63-11=52. If we don't validate this here,
+		// then job creation will fail later.
+		return field.Invalid(field.NewPath(&quot;metadata&quot;).Child(&quot;name&quot;), r.Name, &quot;must be no more than 52 characters&quot;)
+	}
+	return nil
+}
+</code></pre>
+</details></div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../cronjob-tutorial/main-revisited.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../cronjob-tutorial/running.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../cronjob-tutorial/main-revisited.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../cronjob-tutorial/running.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-119864590-1', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

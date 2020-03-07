@@ -2,7 +2,7 @@
 
 我们的 CronJob controller 的基本逻辑是：
 
-1. 按名称加载 CronJob
+1. 加载 CronJob
 
 2. 列出所有 active jobs，并更新状态
 

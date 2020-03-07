@@ -19,7 +19,7 @@
   - [controller 中有什么?](./cronjob-tutorial/controller-overview.md)
   - [实现一个 controller](./cronjob-tutorial/controller-implementation.md)
 
-    - [You said something about main?](./cronjob-tutorial/main-revisited.md)
+    - [main 文件修改什么?](./cronjob-tutorial/main-revisited.md)
 
   - [Implementing defaulting/validating webhooks](./cronjob-tutorial/webhook-implementation.md)
   - [Running and deploying the controller](./cronjob-tutorial/running.md)
