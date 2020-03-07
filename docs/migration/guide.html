@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Migration Guide - Kubebuilder 中文文档</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="../introduction.html">引言</a></li><li class="expanded affix "><a href="../quick-start.html">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="../cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="../cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="../cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="../cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/controller-implementation.html"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/webhook-implementation.html"><strong aria-hidden="true">1.8.</strong> Implementing defaulting/validating webhooks</a></li><li class="expanded "><a href="../cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> Running and deploying the controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> Deploying the cert manager</a></li><li class="expanded "><a href="../cronjob-tutorial/running-webhook.html"><strong aria-hidden="true">1.9.2.</strong> Deploying webhooks</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> Epilogue</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="../migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="../migration/guide.html" class="active"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="../migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="../reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="../reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="../reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="../reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="../reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="../reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="../reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="../reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="../reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="../reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="../reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="../reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="../reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="../reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="../reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="../reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="../reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="../reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../TODO.html">Appendix: The TODO Landing Page</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Kubebuilder 中文文档</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#migration-from-v1-to-v2" id="migration-from-v1-to-v2">Migration from v1 to v2</a></h1>
+<p>Make sure you understand the <a href="./v1vsv2.html">differences between Kubebuilder v1 and v2</a>
+before continuing</p>
+<p>Please ensure you have followed the <a href="/quick-start.html#installation">installation guide</a>
+to install the required components.</p>
+<p>The recommended way to migrate a v1 project is to create a new v2 project and
+copy over the API and the reconciliation code. The conversion will end up with a
+project that looks like a native v2 project. However, in some cases, it’s
+possible to do an in-place upgrade (i.e. reuse the v1 project layout, upgrading
+controller-runtime and controller-tools.</p>
+<p>Let’s take the <a href="https://github.com/kubernetes-sigs/kubebuilder/tree/master/docs/book/src/migration/testdata/gopath/project-v1">example v1 project</a> and migrate it to Kubebuilder
+v2. At the end, we should have something that looks like the
+<a href="https://github.com/kubernetes-sigs/kubebuilder/tree/master/docs/book/src/cronjob-tutorial/testdata/project">example v2 project</a>.</p>
+<h2><a class="header" href="#preparation" id="preparation">Preparation</a></h2>
+<p>We’ll need to figure out what the group, version, kind and domain are.</p>
+<p>Let’s take a look at our current v1 project structure:</p>
+<pre><code>pkg/
+├── apis
+│   ├── addtoscheme_batch_v1.go
+│   ├── apis.go
+│   └── batch
+│       ├── group.go
+│       └── v1
+│           ├── cronjob_types.go
+│           ├── cronjob_types_test.go
+│           ├── doc.go
+│           ├── register.go
+│           ├── v1_suite_test.go
+│           └── zz_generated.deepcopy.go
+├── controller
+└── webhook
+</code></pre>
+<p>All of our API information is stored in <code>pkg/apis/batch</code>, so we can look
+there to find what we need to know.</p>
+<p>In <code>cronjob_types.go</code>, we can find</p>
+<pre><code class="language-go">type CronJob struct {...}
+</code></pre>
+<p>In <code>register.go</code>, we can find</p>
+<pre><code class="language-go">SchemeGroupVersion = schema.GroupVersion{Group: &quot;batch.tutorial.kubebuilder.io&quot;, Version: &quot;v1&quot;}
+</code></pre>
+<p>Putting that together, we get <code>CronJob</code> as the kind, and <code>batch.tutorial.kubebuilder.io/v1</code> as the group-version</p>
+<h2><a class="header" href="#initialize-a-v2-project" id="initialize-a-v2-project">Initialize a v2 Project</a></h2>
+<p>Now, we need to initialize a v2 project.  Before we do that, though, we’ll need
+to initialize a new go module if we’re not on the <code>gopath</code>:</p>
+<pre><code class="language-bash">go mod init tutorial.kubebuilder.io/project
+</code></pre>
+<p>Then, we can finish initializing the project with kubebuilder:</p>
+<pre><code class="language-bash">kubebuilder init --domain tutorial.kubebuilder.io
+</code></pre>
+<h2><a class="header" href="#migrate-apis-and-controllers" id="migrate-apis-and-controllers">Migrate APIs and Controllers</a></h2>
+<p>Next, we’ll re-scaffold out the API types and controllers. Since we want both,
+we’ll say yes to both the API and controller prompts when asked what parts we
+want to scaffold:</p>
+<pre><code class="language-bash">kubebuilder create api --group batch --version v1 --kind CronJob
+</code></pre>
+<p>If you’re using multiple groups, some manual work is required to migrate.
+Please follow <a href="/migration/multi-group.html">this</a> for more details.</p>
+<h3><a class="header" href="#migrate-the-apis" id="migrate-the-apis">Migrate the APIs</a></h3>
+<p>Now, let’s copy the API definition from <code>pkg/apis/batch/v1/cronjob_types.go</code> to
+<code>api/v1/cronjob_types.go</code>. We only need to copy the implementation of the <code>Spec</code>
+and <code>Status</code> fields.</p>
+<p>We can replace the <code>+k8s:deepcopy-gen:interfaces=...</code> marker (which is
+<a href="/reference/markers/object.html">deprecated in kubebuilder</a>) with
+<code>+kubebuilder:object:root=true</code>.</p>
+<p>We don’t need the following markers any more (they’re not used anymore, and are
+relics from much older versions of KubeBuilder):</p>
+<pre><code class="language-go">// +genclient
+// +k8s:openapi-gen=true
+</code></pre>
+<p>Our API types should look like the following:</p>
+<pre><code class="language-go">// +kubebuilder:object:root=true
+
+// CronJob is the Schema for the cronjobs API
+type CronJob struct {...}
+
+// +kubebuilder:object:root=true
+
+// CronJobList contains a list of CronJob
+type CronJobList struct {...}
+</code></pre>
+<h3><a class="header" href="#migrate-the-controllers" id="migrate-the-controllers">Migrate the Controllers</a></h3>
+<p>Now, let’s migrate the controller reconciler code from
+<code>pkg/controller/cronjob/cronjob_controller.go</code> to
+<code>controllers/cronjob_controller.go</code>.</p>
+<p>We’ll need to copy</p>
+<ul>
+<li>the fields from the <code>ReconcileCronJob</code> struct to <code>CronJobReconciler</code></li>
+<li>the contents of the <code>Reconcile</code> function</li>
+<li>the <a href="/reference/markers/rbac.html">rbac related markers</a> to the new file.</li>
+<li>the code under <code>func add(mgr manager.Manager, r reconcile.Reconciler) error</code>
+to <code>func SetupWithManager</code></li>
+</ul>
+<h2><a class="header" href="#migrate-the-webhooks" id="migrate-the-webhooks">Migrate the Webhooks</a></h2>
+<p>If you don’t have a webhook, you can skip this section.</p>
+<h3><a class="header" href="#webhooks-for-core-types-and-external-crds" id="webhooks-for-core-types-and-external-crds">Webhooks for Core Types and External CRDs</a></h3>
+<p>If you are using webhooks for Kubernetes core types (e.g. Pods), or for an
+external CRD that is not owned by you, you can refer the
+<a href="https://sigs.k8s.io/controller-runtime/examples/builtins">controller-runtime example for builtin types</a>
+and do something similar. Kubebuilder doesn’t scaffold much for these cases, but
+you can use the library in controller-runtime.</p>
+<h3><a class="header" href="#scaffold-webhooks-for-our-crds" id="scaffold-webhooks-for-our-crds">Scaffold Webhooks for our CRDs</a></h3>
+<p>Now let’s scaffold the webhooks for our CRD (CronJob). We’ll need to run the
+following command with the <code>--defaulting</code> and <code>--programmatic-validation</code> flags
+(since our test project uses defaulting and validating webhooks):</p>
+<pre><code class="language-bash">kubebuilder create webhook --group batch --version v1 --kind CronJob --defaulting --programmatic-validation
+</code></pre>
+<p>Depending on how many CRDs need webhooks, we may need to run the above command
+multiple times with different Group-Version-Kinds.</p>
+<p>Now, we’ll need to copy the logic for each webhook. For validating webhooks, we
+can copy the contents from
+<code>func validatingCronJobFn</code> in <code>pkg/default_server/cronjob/validating/cronjob_create_handler.go</code>
+to <code>func ValidateCreate</code> in <code>api/v1/cronjob_webhook.go</code> and then the same for <code>update</code>.</p>
+<p>Similarly, we’ll copy from <code>func mutatingCronJobFn</code> to <code>func Default</code>.</p>
+<h3><a class="header" href="#webhook-markers" id="webhook-markers">Webhook Markers</a></h3>
+<p>When scaffolding webhooks, Kubebuilder v2 adds the following markers:</p>
+<pre><code>// These are v2 markers
+
+// This is for the mutating webhook
+// +kubebuilder:webhook:path=/mutate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=true,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=create;update,versions=v1,name=mcronjob.kb.io
+
+...
+
+// This is for the validating webhook
+// +kubebuilder:webhook:path=/validate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=false,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=create;update,versions=v1,name=vcronjob.kb.io
+</code></pre>
+<p>The default verbs are <code>verbs=create;update</code>. We need to ensure <code>verbs</code> matches
+what we need. For example, if we only want to validate creation, then we would
+change it to <code>verbs=create</code>.</p>
+<p>We also need to ensure <code>failure-policy</code> is still the same.</p>
+<p>Markers like the following are no longer needed (since they deal with
+self-deploying certificate configuration, which was removed in v2):</p>
+<pre><code class="language-go">// v1 markers
+// +kubebuilder:webhook:port=9876,cert-dir=/tmp/cert
+// +kubebuilder:webhook:service=test-system:webhook-service,selector=app:webhook-server
+// +kubebuilder:webhook:secret=test-system:webhook-server-secret
+// +kubebuilder:webhook:mutating-webhook-config-name=test-mutating-webhook-cfg
+// +kubebuilder:webhook:validating-webhook-config-name=test-validating-webhook-cfg
+</code></pre>
+<p>In v1, a single webhook marker may be split into multiple ones in the same
+paragraph. In v2, each webhook must be represented by a single marker.</p>
+<h2><a class="header" href="#others" id="others">Others</a></h2>
+<p>If there are any manual updates in <code>main.go</code> in v1, we need to port the changes
+to the new <code>main.go</code>. We’ll also need to ensure all of the needed schemes have
+been registered.</p>
+<p>If there are additional manifests added under <code>config</code> directory, port them as
+well.</p>
+<p>Change the image name in the Makefile if needed.</p>
+<h2><a class="header" href="#verification" id="verification">Verification</a></h2>
+<p>Finally, we can run <code>make</code> and <code>make docker-build</code> to ensure things are working
+fine.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../migration/v1vsv2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../migration/multi-group.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../migration/v1vsv2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../migration/multi-group.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-119864590-1', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
