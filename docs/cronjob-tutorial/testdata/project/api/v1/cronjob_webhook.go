@@ -57,7 +57,7 @@ func (r *CronJob) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 /*
 我们使用 `webhook.Defaulter` 接口将 webhook 的默认值设置为我们的 CRD，
-这将自动生成一个 Webhook，并调用它的 Default 方法。
+这将自动生成一个 Webhook(defaulting webhooks)，并调用它的 Default 方法。
 
 `Default` 方法用来改变接受到的内容，并设置默认值。
 */
@@ -95,10 +95,10 @@ func (r *CronJob) Default() {
 我们可以通过声明式验证(declarative validation)来验证我们的 CRD，
 通常情况下，声明式验证就足够了，但是有时更高级的用例需要进行复杂的验证。
 
-例如，我们将在后面看到我们使验证(declarative validation)来验证 cron schedule(是否是 * * * * * 这种测试) 的格式是否正确，
+例如，我们将在后面看到我们使验证(declarative validation)来验证 cron schedule(是否是 * * * * * 这种格式) 的格式是否正确，
 而不是编写复杂的正则表达式来验证。
 
-如果实现了 `webhook.Validator` 接口，将会自动生成一个 Webhook 来调用我们验证方法。
+如果实现了 `webhook.Validator` 接口，将会自动生成一个 Webhook(validating webhooks) 来调用我们验证方法。
 
 `ValidateCreate`、`ValidateUpdate` 和 `ValidateDelete` 方法分别在创建，更新和删除 resrouces 时验证它们收到的信息。
 我们将 `ValidateCreate` 与 `ValidateUpdate` 方法分开，因为某些字段可能是固定不变的，

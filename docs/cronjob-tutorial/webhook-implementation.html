@@ -208,7 +208,7 @@ import (
 <pre><code class="language-go">// +kubebuilder:webhook:path=/mutate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=true,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=create;update,versions=v1,name=mcronjob.kb.io
 </code></pre>
 <p>我们使用 <code>webhook.Defaulter</code> 接口将 webhook 的默认值设置为我们的 CRD，
-这将自动生成一个 Webhook，并调用它的 Default 方法。</p>
+这将自动生成一个 Webhook(defaulting webhooks)，并调用它的 Default 方法。</p>
 <p><code>Default</code> 方法用来改变接受到的内容，并设置默认值。</p>
 <pre><code class="language-go">var _ webhook.Defaulter = &amp;CronJob{}
 
@@ -238,9 +238,9 @@ func (r *CronJob) Default() {
 </code></pre>
 <p>我们可以通过声明式验证(declarative validation)来验证我们的 CRD，
 通常情况下，声明式验证就足够了，但是有时更高级的用例需要进行复杂的验证。</p>
-<p>例如，我们将在后面看到我们使验证(declarative validation)来验证 cron schedule(是否是 * * * * * 这种测试) 的格式是否正确，
+<p>例如，我们将在后面看到我们使验证(declarative validation)来验证 cron schedule(是否是 * * * * * 这种格式) 的格式是否正确，
 而不是编写复杂的正则表达式来验证。</p>
-<p>如果实现了 <code>webhook.Validator</code> 接口，将会自动生成一个 Webhook 来调用我们验证方法。</p>
+<p>如果实现了 <code>webhook.Validator</code> 接口，将会自动生成一个 Webhook(validating webhooks) 来调用我们验证方法。</p>
 <p><code>ValidateCreate</code>、<code>ValidateUpdate</code> 和 <code>ValidateDelete</code> 方法分别在创建，更新和删除 resrouces 时验证它们收到的信息。
 我们将 <code>ValidateCreate</code> 与 <code>ValidateUpdate</code> 方法分开，因为某些字段可能是固定不变的，
 他们只能在 <code>ValidateCreate</code> 方法中被调用，这样会提高一些安全性，
@@ -366,6 +366,21 @@ func (r *CronJob) ValidateDelete() error {
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
