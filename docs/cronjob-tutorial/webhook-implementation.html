@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Implementing defaulting/validating webhooks - Kubebuilder 中文文档</title>
+        <title>实现 defaulting webhooks 和 validating webhooks - Kubebuilder 中文文档</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded affix "><a href="../introduction.html">引言</a></li><li class="expanded affix "><a href="../quick-start.html">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="../cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="../cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="../cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="../cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/controller-implementation.html"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/webhook-implementation.html" class="active"><strong aria-hidden="true">1.8.</strong> Implementing defaulting/validating webhooks</a></li><li class="expanded "><a href="../cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> Running and deploying the controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> Deploying the cert manager</a></li><li class="expanded "><a href="../cronjob-tutorial/running-webhook.html"><strong aria-hidden="true">1.9.2.</strong> Deploying webhooks</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> Epilogue</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="../migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="../migration/guide.html"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="../migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="../reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="../reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="../reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="../reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="../reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="../reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="../reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="../reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="../reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="../reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="../reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="../reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="../reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="../reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="../reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="../reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="../reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="../reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../TODO.html">Appendix: The TODO Landing Page</a></li></ol>
+                <ol class="chapter"><li class="expanded affix "><a href="../introduction.html">引言</a></li><li class="expanded affix "><a href="../quick-start.html">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="../cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="../cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="../cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="../cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/controller-implementation.html"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/webhook-implementation.html" class="active"><strong aria-hidden="true">1.8.</strong> 实现 defaulting webhooks 和 validating webhooks</a></li><li class="expanded "><a href="../cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> Running and deploying the controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> Deploying the cert manager</a></li><li class="expanded "><a href="../cronjob-tutorial/running-webhook.html"><strong aria-hidden="true">1.9.2.</strong> Deploying webhooks</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> Epilogue</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="../migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="../migration/guide.html"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="../migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="../reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="../reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="../reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="../reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="../reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="../reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="../reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="../reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="../reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="../reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="../reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="../reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="../reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="../reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="../reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="../reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="../reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="../reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../TODO.html">Appendix: The TODO Landing Page</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,21 +152,19 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#implementing-defaultingvalidating-webhooks" id="implementing-defaultingvalidating-webhooks">Implementing defaulting/validating webhooks</a></h1>
-<p>If you want to implement <a href="../reference/admission-webhook.html">admission webhooks</a>
-for your CRD, the only thing you need to do is to implement the <code>Defaulter</code>
-and (or) the <code>Validator</code> interface.</p>
-<p>Kubebuilder takes care of the rest for you, such as</p>
+                        <h1><a class="header" href="#实现-defaulting-webhooks-和-validating-webhooks" id="实现-defaulting-webhooks-和-validating-webhooks">实现 defaulting webhooks 和 validating webhooks</a></h1>
+<p>如果你想为你的 CRD 实现 <a href="../reference/admission-webhook.html">admission webhooks</a>，你只需要实现 <code>Defaulter</code> 和 (或)  <code>Validator</code>  接口即可。</p>
+<p>其余的东西 Kubebuilder 会为你实现，比如：</p>
 <ol>
-<li>Creating the webhook server.</li>
-<li>Ensuring the server has been added in the manager.</li>
-<li>Creating handlers for your webhooks.</li>
-<li>Registering each handler with a path in your server.</li>
+<li>创建一个 webhook server</li>
+<li>确保这个 server 被添加到 manager 中</li>
+<li>为你的 webhooks 创建一个 handlers</li>
+<li>将每个 handler 以 path 形式注册到你的 server 中</li>
 </ol>
-<p>First, let’s scaffold the webhooks for our CRD (CronJob). We’ll need to run the following command with the <code>--defaulting</code> and <code>--programmatic-validation</code> flags (since our test project will use defaulting and validating webhooks):</p>
+<p>首先，让我们为 CRD（CronJob）创建 webhooks，我们需要用到 <code>--defaulting</code> 和 <code>--programmatic-validation</code> 参数(因为我们的测试项目将使用 defaulting webhooks 和 validating webhooks)：</p>
 <pre><code class="language-bash">kubebuilder create webhook --group batch --version v1 --kind CronJob --defaulting --programmatic-validation
 </code></pre>
-<p>This will scaffold the webhook functions and register your webhook with the manager in your <code>main.go</code> for you.</p>
+<p>这将创建 Webhook 功能相关的方法，并在 <code>main.go</code> 中注册 Webhook 到你的 manager 中。</p>
 <div class="literate"><cite class="literate-source"><a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/api/v1/cronjob_webhook.go">project/api/v1/cronjob_webhook.go</a></cite><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Apache License</span></pre></summary>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
@@ -194,24 +192,24 @@ import (
 )
 </code></pre>
 </details>
-<p>Next, we’ll setup a logger for the webhooks.</p>
+<p>下一步，为我们的 webhooks 创建一个 logger。</p>
 <pre><code class="language-go">var cronjoblog = logf.Log.WithName(&quot;cronjob-resource&quot;)
 </code></pre>
-<p>Then, we set up the webhook with the manager.</p>
+<p>然后, 我们通过 manager 构建 webhook。</p>
 <pre><code class="language-go">func (r *CronJob) SetupWebhookWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewWebhookManagedBy(mgr).
 		For(r).
 		Complete()
 }
 </code></pre>
-<p>Notice that we use kubebuilder markers to generate webhook manifests.
-This marker is responsible for generating a mutating webhook manifest.</p>
-<p>The meaning of each marker can be found <a href="/reference/markers/webhook.html">here</a>.</p>
+<p>注意，下面我们使用 kubebuilder 的 marker 语句生成 webhook manifests(配置 webhook 的 yaml 文件)，
+这个 marker 会生成一个 mutating Webhook 的 manifests。</p>
+<p>关于每个参数的解释都可以在<a href="../reference/markers/webhook.html">这里</a>找到。</p>
 <pre><code class="language-go">// +kubebuilder:webhook:path=/mutate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=true,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=create;update,versions=v1,name=mcronjob.kb.io
 </code></pre>
-<p>We use the <code>webhook.Defaulter</code> interface to set defaults to our CRD.
-A webhook will automatically be served that calls this defaulting.</p>
-<p>The <code>Default</code> method is expected to mutate the receiver, setting the defaults.</p>
+<p>我们使用 <code>webhook.Defaulter</code> 接口将 webhook 的默认值设置为我们的 CRD，
+这将自动生成一个 Webhook，并调用它的 Default 方法。</p>
+<p><code>Default</code> 方法用来改变接受到的内容，并设置默认值。</p>
 <pre><code class="language-go">var _ webhook.Defaulter = &amp;CronJob{}
 
 // Default implements webhook.Defaulter so a webhook will be registered for the type
@@ -234,26 +232,22 @@ func (r *CronJob) Default() {
 	}
 }
 </code></pre>
-<p>This marker is responsible for generating a validating webhook manifest.</p>
+<p>这个 marker 负责生成一个 validating webhook manifest。</p>
 <pre><code class="language-go">// TODO(user): change verbs to &quot;verbs=create;update;delete&quot; if you want to enable deletion validation.
 // +kubebuilder:webhook:verbs=create;update,path=/validate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=false,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,versions=v1,name=vcronjob.kb.io
 </code></pre>
-<p>To validate our CRD beyond what’s possible with declarative validation.
-Generally, declarative validation should be sufficient, but sometimes more
-advanced use cases call for complex validation.</p>
-<p>For instance, we’ll see below that we use this to validate a well-formed cron
-schedule without making up a long regular expression.</p>
-<p>If <code>webhook.Validator</code> interface is implemented, a webhook will automatically be
-served that calls the validation.</p>
-<p>The <code>ValidateCreate</code>, <code>ValidateUpdate</code> and <code>ValidateDelete</code> methods are expected
-to validate that its receiver upon creation, update and deletion respectively.
-We separate out ValidateCreate from ValidateUpdate to allow behavior like making
-certain fields immutable, so that they can only be set on creation.
-ValidateDelete is also separated from ValidateUpdate to allow different
-validation behavior on deletion.
-Here, however, we just use the same shared validation for <code>ValidateCreate</code> and
-<code>ValidateUpdate</code>. And we do nothing in <code>ValidateDelete</code>, since we don’t need to
-validate anything on deletion.</p>
+<p>我们可以通过声明式验证(declarative validation)来验证我们的 CRD，
+通常情况下，声明式验证就足够了，但是有时更高级的用例需要进行复杂的验证。</p>
+<p>例如，我们将在后面看到我们使验证(declarative validation)来验证 cron schedule(是否是 * * * * * 这种测试) 的格式是否正确，
+而不是编写复杂的正则表达式来验证。</p>
+<p>如果实现了 <code>webhook.Validator</code> 接口，将会自动生成一个 Webhook 来调用我们验证方法。</p>
+<p><code>ValidateCreate</code>、<code>ValidateUpdate</code> 和 <code>ValidateDelete</code> 方法分别在创建，更新和删除 resrouces 时验证它们收到的信息。
+我们将 <code>ValidateCreate</code> 与 <code>ValidateUpdate</code> 方法分开，因为某些字段可能是固定不变的，
+他们只能在 <code>ValidateCreate</code> 方法中被调用，这样会提高一些安全性，
+<code>ValidateDelete</code> 和 <code>ValidateUpdate</code> 方法也被分开，以便在进行删除操作时进行单独的验证。
+但是在这里，我们在 <code>ValidateDelete</code> 中什么也没有做，
+只是对 <code>ValidateCreate</code> 和 <code>ValidateUpdate</code> 使用同一个方法进行了验证，
+因为我们不需要在删除时验证任何内容。</p>
 <pre><code class="language-go">var _ webhook.Validator = &amp;CronJob{}
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -278,7 +272,7 @@ func (r *CronJob) ValidateDelete() error {
 	return nil
 }
 </code></pre>
-<p>We validate the name and the spec of the CronJob.</p>
+<p>验证 CronJob 的 name 和 spec 字段</p>
 <pre><code class="language-go">func (r *CronJob) validateCronJob() error {
 	var allErrs field.ErrorList
 	if err := r.validateCronJobName(); err != nil {
@@ -296,12 +290,10 @@ func (r *CronJob) ValidateDelete() error {
 		r.Name, allErrs)
 }
 </code></pre>
-<p>Some fields are declaratively validated by OpenAPI schema.
-You can find kubebuilder validation markers (prefixed
-with <code>// +kubebuilder:validation</code>) in the <a href="api-design.html">API</a>
-You can find all of the kubebuilder supported markers for
-declaring validation by running <code>controller-gen crd -w</code>,
-or <a href="/reference/markers/crd-validation.html">here</a>.</p>
+<p>一些字段是用 OpenAPI schema 方式进行验证，
+你可以在 <a href="./api-design.html">设计API</a> 中找到有关 kubebuilder 的验证 markers(注释前缀为<code>//+kubebuilder:validation</code>)。
+你也可以通过运行 <code>controller-gen crd -w</code> 或 在<a href="/reference/markers/crd-validation.html">这里</a>
+找到所有关于使用 markers 验证的格式信息。</p>
 <pre><code class="language-go">func (r *CronJob) validateCronJobSpec() *field.Error {
 	// The field helpers from the kubernetes API machinery help us return nicely
 	// structured validation errors.
@@ -310,8 +302,7 @@ or <a href="/reference/markers/crd-validation.html">here</a>.</p>
 		field.NewPath(&quot;spec&quot;).Child(&quot;schedule&quot;))
 }
 </code></pre>
-<p>We’ll need to validate the <a href="https://en.wikipedia.org/wiki/Cron">cron</a> schedule
-is well-formatted.</p>
+<p>我们在这里验证 <a href="https://en.wikipedia.org/wiki/Cron">cron</a> schedule 的格式</p>
 <pre><code class="language-go">func validateScheduleFormat(schedule string, fldPath *field.Path) *field.Error {
 	if _, err := cron.ParseStandard(schedule); err != nil {
 		return field.Invalid(fldPath, schedule, err.Error())
@@ -320,11 +311,9 @@ is well-formatted.</p>
 }
 </code></pre>
 <details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Validate object name</span></pre></summary>
-<p>Validating the length of a string field can be done declaratively by
-the validation schema.</p>
-<p>But the <code>ObjectMeta.Name</code> field is defined in a shared package under
-the apimachinery repo, so we can’t declaratively validate it using
-the validation schema.</p>
+<p>验证字符串字段的长度可以以声明方式完成。</p>
+<p>但是 <code>ObjectMeta.Name</code> 字段是在 <code>apimachinery</code> 库下的 package 中定义的，
+因此我们无法以声明性的方式对其进行验证。</p>
 <pre><code class="language-go">func (r *CronJob) validateCronJobName() *field.Error {
 	if len(r.ObjectMeta.Name) &gt; validationutils.DNS1035LabelMaxLength-11 {
 		// The job name length is 63 character like all Kubernetes objects
@@ -377,21 +366,6 @@ the validation schema.</p>
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

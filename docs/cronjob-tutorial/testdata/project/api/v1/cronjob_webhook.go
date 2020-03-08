@@ -31,13 +31,13 @@ import (
 // +kubebuilder:docs-gen:collapse=Go imports
 
 /*
-Next, we'll setup a logger for the webhooks.
+下一步，为我们的 webhooks 创建一个 logger。
 */
 
 var cronjoblog = logf.Log.WithName("cronjob-resource")
 
 /*
-Then, we set up the webhook with the manager.
+然后, 我们通过 manager 构建 webhook。
 */
 
 func (r *CronJob) SetupWebhookWithManager(mgr ctrl.Manager) error {
@@ -47,19 +47,19 @@ func (r *CronJob) SetupWebhookWithManager(mgr ctrl.Manager) error {
 }
 
 /*
-Notice that we use kubebuilder markers to generate webhook manifests.
-This marker is responsible for generating a mutating webhook manifest.
+注意，下面我们使用 kubebuilder 的 marker 语句生成 webhook manifests(配置 webhook 的 yaml 文件)，
+这个 marker 会生成一个 mutating Webhook 的 manifests。
 
-The meaning of each marker can be found [here](/reference/markers/webhook.md).
+关于每个参数的解释都可以在[这里](../reference/markers/webhook.md)找到。
 */
 
 // +kubebuilder:webhook:path=/mutate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=true,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,verbs=create;update,versions=v1,name=mcronjob.kb.io
 
 /*
-We use the `webhook.Defaulter` interface to set defaults to our CRD.
-A webhook will automatically be served that calls this defaulting.
+我们使用 `webhook.Defaulter` 接口将 webhook 的默认值设置为我们的 CRD，
+这将自动生成一个 Webhook，并调用它的 Default 方法。
 
-The `Default` method is expected to mutate the receiver, setting the defaults.
+`Default` 方法用来改变接受到的内容，并设置默认值。
 */
 
 var _ webhook.Defaulter = &CronJob{}
@@ -85,32 +85,28 @@ func (r *CronJob) Default() {
 }
 
 /*
-This marker is responsible for generating a validating webhook manifest.
+这个 marker 负责生成一个 validating webhook manifest。
 */
 
 // TODO(user): change verbs to "verbs=create;update;delete" if you want to enable deletion validation.
 // +kubebuilder:webhook:verbs=create;update,path=/validate-batch-tutorial-kubebuilder-io-v1-cronjob,mutating=false,failurePolicy=fail,groups=batch.tutorial.kubebuilder.io,resources=cronjobs,versions=v1,name=vcronjob.kb.io
 
 /*
-To validate our CRD beyond what's possible with declarative validation.
-Generally, declarative validation should be sufficient, but sometimes more
-advanced use cases call for complex validation.
+我们可以通过声明式验证(declarative validation)来验证我们的 CRD，
+通常情况下，声明式验证就足够了，但是有时更高级的用例需要进行复杂的验证。
 
-For instance, we'll see below that we use this to validate a well-formed cron
-schedule without making up a long regular expression.
+例如，我们将在后面看到我们使验证(declarative validation)来验证 cron schedule(是否是 * * * * * 这种测试) 的格式是否正确，
+而不是编写复杂的正则表达式来验证。
 
-If `webhook.Validator` interface is implemented, a webhook will automatically be
-served that calls the validation.
+如果实现了 `webhook.Validator` 接口，将会自动生成一个 Webhook 来调用我们验证方法。
 
-The `ValidateCreate`, `ValidateUpdate` and `ValidateDelete` methods are expected
-to validate that its receiver upon creation, update and deletion respectively.
-We separate out ValidateCreate from ValidateUpdate to allow behavior like making
-certain fields immutable, so that they can only be set on creation.
-ValidateDelete is also separated from ValidateUpdate to allow different
-validation behavior on deletion.
-Here, however, we just use the same shared validation for `ValidateCreate` and
-`ValidateUpdate`. And we do nothing in `ValidateDelete`, since we don't need to
-validate anything on deletion.
+`ValidateCreate`、`ValidateUpdate` 和 `ValidateDelete` 方法分别在创建，更新和删除 resrouces 时验证它们收到的信息。
+我们将 `ValidateCreate` 与 `ValidateUpdate` 方法分开，因为某些字段可能是固定不变的，
+他们只能在 `ValidateCreate` 方法中被调用，这样会提高一些安全性，
+`ValidateDelete` 和 `ValidateUpdate` 方法也被分开，以便在进行删除操作时进行单独的验证。
+但是在这里，我们在 `ValidateDelete` 中什么也没有做，
+只是对 `ValidateCreate` 和 `ValidateUpdate` 使用同一个方法进行了验证，
+因为我们不需要在删除时验证任何内容。
 */
 
 var _ webhook.Validator = &CronJob{}
@@ -138,7 +134,7 @@ func (r *CronJob) ValidateDelete() error {
 }
 
 /*
-We validate the name and the spec of the CronJob.
+验证 CronJob 的 name 和 spec 字段
 */
 
 func (r *CronJob) validateCronJob() error {
@@ -159,12 +155,10 @@ func (r *CronJob) validateCronJob() error {
 }
 
 /*
-Some fields are declaratively validated by OpenAPI schema.
-You can find kubebuilder validation markers (prefixed
-with `// +kubebuilder:validation`) in the [API](api-design.md)
-You can find all of the kubebuilder supported markers for
-declaring validation by running `controller-gen crd -w`,
-or [here](/reference/markers/crd-validation.md).
+一些字段是用 OpenAPI schema 方式进行验证，
+你可以在 [设计API](./api-design.md) 中找到有关 kubebuilder 的验证 markers(注释前缀为`//+kubebuilder:validation`)。
+你也可以通过运行 `controller-gen crd -w` 或 在[这里](/reference/markers/crd-validation.md)
+找到所有关于使用 markers 验证的格式信息。
 */
 
 func (r *CronJob) validateCronJobSpec() *field.Error {
@@ -176,8 +170,7 @@ func (r *CronJob) validateCronJobSpec() *field.Error {
 }
 
 /*
-We'll need to validate the [cron](https://en.wikipedia.org/wiki/Cron) schedule
-is well-formatted.
+我们在这里验证 [cron](https://en.wikipedia.org/wiki/Cron) schedule 的格式
 */
 
 func validateScheduleFormat(schedule string, fldPath *field.Path) *field.Error {
@@ -188,12 +181,10 @@ func validateScheduleFormat(schedule string, fldPath *field.Path) *field.Error {
 }
 
 /*
-Validating the length of a string field can be done declaratively by
-the validation schema.
+验证字符串字段的长度可以以声明方式完成。
 
-But the `ObjectMeta.Name` field is defined in a shared package under
-the apimachinery repo, so we can't declaratively validate it using
-the validation schema.
+但是 `ObjectMeta.Name` 字段是在 `apimachinery` 库下的 package 中定义的，
+因此我们无法以声明性的方式对其进行验证。
 */
 
 func (r *CronJob) validateCronJobName() *field.Error {
