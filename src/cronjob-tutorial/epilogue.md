@@ -1,19 +1,14 @@
-# Epilogue
+# 结语
 
-By this point, we've got a pretty full-featured implementation of the
-CronJob controller, and have made use of most of the features of
-KubeBuilder.
+至此，我们已经有了 CronJob controller 的相当完整的实现，并利用了KubeBuilder 的大多数功能。
 
-If you want more, head over to the [Multi-Version
-Tutorial](/multiversion-tutorial/tutorial.md) to learn how to add new API
-versions to a project.
+如果需要更多内容，请转到 [Multi-Version
+指南l](/multiversion-tutorial/tutorial.md) 以了解如何向项目添加新的 API version。
 
-Additionally, you can try the following steps on your own -- we'll have
-a tutorial section on them Soon™: 
+此外，您可以自行尝试执行以下步骤 -- 很快我们将为它们提供一个教程：
 
-- writing unit/integration tests (check out [envtest][envtest])
-- adding [additional printer columns][printer-columns] `kubectl get`
-
+- 编写单元/整合测试(使用  [envtest])
+- 为 `kubectl get` 命令[添加额外字段][printer-columns] 
 [envtest]: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/envtest
 
 [printer-columns]: /reference/generating-crd.md#additional-printer-columns

@@ -22,12 +22,12 @@
     - [main 文件修改什么?](./cronjob-tutorial/main-revisited.md)
 
   - [实现 defaulting webhooks 和 validating webhooks](./cronjob-tutorial/webhook-implementation.md)
-  - [Running and deploying the controller](./cronjob-tutorial/running.md)
+  - [运行和部署 controller](./cronjob-tutorial/running.md)
 
-    - [Deploying the cert manager](./cronjob-tutorial/cert-manager.md)
-    - [Deploying webhooks](./cronjob-tutorial/running-webhook.md)
+    - [部署 cert manager](./cronjob-tutorial/cert-manager.md)
+    - [部署 webhooks](./cronjob-tutorial/running-webhook.md)
 
-  - [Epilogue](./cronjob-tutorial/epilogue.md)
+  - [结语](./cronjob-tutorial/epilogue.md)
 
 - [Tutorial: Multi-Version API](./multiversion-tutorial/tutorial.md)
 

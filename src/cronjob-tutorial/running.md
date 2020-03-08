@@ -1,45 +1,34 @@
-# Running and deploying the controller
+# 运行和部署 controller
 
-To test out the controller, we can run it locally against the cluster.
-Before we do so, though, we'll need to install our CRDs, as per the [quick
-start](/quick-start.md).  This will automatically update the YAML
-manifests using controller-tools, if needed:
+为了测试，我们可以在本地运行 controller。像[快速入门](..//quick-start.md)中说的，在运行 controller 之前，我们需要先安装 CRD。
+
+一下命令会通过 controller-tools 更新我们的 YAML manifests 文件。
 
 ```bash
 make install
 ```
 
-Now that we've installed our CRDs, we can run the controller against our
-cluster.  This will use whatever credentials that we connect to the
-cluster with, so we don't need to worry about RBAC just yet.
+现在，我们已经安装了 CRD，我们可以针对我们的集群运行 controller了，运行 controller 的证书和我们连接 k8s 集群的证书是同一个 ，因此我们现在不必担心 RBAC 权限问题。
 
 <aside class="note"> 
 
-<h1>Running webhooks locally</h1>
+<h1>在本地运行 webhooks</h1>
 
-If you want to run the webhooks locally, you'll have to generate
-certificates for serving the webhooks, and place them in the right
-directory (`/tmp/k8s-webhook-server/serving-certs/tls.{crt,key}`, by
-default).
+如果你想在本地运行 Webhooks，则必须生成用于服务 Webhooks 的证书，并把它放到正确的目录中(`/tmp/k8s-webhook-server/serving-certs/tls.{crt,key}`，默认情况下）。
 
-If you're not running a local API server, you'll also need to figure out
-how to proxy traffic from the remote cluster to your local webhook server.
-For this reason, we generally reccomended disabling webhooks when doing
-your local code-run-test cycle, as we do below.
+如果你没有运行本地 API server，则还需要清楚如何将流量从远程群集代理到本地 Webhook 服务器。因此，在本地做 code-run-test 时，建议你关闭 webhooks ，如下所示。
 
 </aside>
 
-In a separate terminal, run
+在另一个终端中，运行：
 
 ```bash
 make run ENABLE_WEBHOOKS=false
 ```
 
-You should see logs from the controller about starting up, but it won't do
-anything just yet.
+您应该会从 controller 中看到有关启动的日志，但是它目前还没有做任何事。
 
-At this point, we need a CronJob to test with.  Let's write a sample to
-`config/samples/batch_v1_cronjob.yaml`, and use that:
+此时，我们需要创建一个 CronJob 进行测试。让我们写个简单的例子放到 `config/samples/batch_v1_cronjob.yaml` 中，并运行该例子：
 
 ```yaml
 {{#include ./testdata/project/config/samples/batch_v1_cronjob.yaml}}
@@ -49,21 +38,18 @@ At this point, we need a CronJob to test with.  Let's write a sample to
 kubectl create -f config/samples/batch_v1_cronjob.yaml
 ```
 
-At this point, you should see a flurry of activity.  If you watch the
-changes, you should see your cronjob running, and updating status:
+执行下面的命令，你应该会看到一连串的信息。如果你使用 `-w` 参数，应该会看到你的 `cronjob` 正在运行，并且正在更新状态：
 
 ```bash
 kubectl get cronjob.batch.tutorial.kubebuilder.io -o yaml
 kubectl get job
 ```
 
-Now that we know it's working, we can run it in the cluster. Stop the
-`make run` invocation, and run
+现在, 我们已经可以在集群中运行 CronJob 了。 停掉 `make run`  命令，然后运行
 
 ```bash
 make docker-build docker-push IMG=<some-registry>/<project-name>:tag
 make deploy IMG=<some-registry>/<project-name>:tag
 ```
 
-If we list cronjobs again like we did before, we should see the controller
-functioning again!
+如果像以前一样再次get cronjobs ，我们应该可以看到 controller 再次运行！

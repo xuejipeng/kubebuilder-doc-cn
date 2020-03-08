@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Deploying webhooks - Kubebuilder 中文文档</title>
+        <title>部署 webhooks - Kubebuilder 中文文档</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded affix "><a href="../introduction.html">引言</a></li><li class="expanded affix "><a href="../quick-start.html">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="../cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="../cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="../cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="../cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/controller-implementation.html"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/webhook-implementation.html"><strong aria-hidden="true">1.8.</strong> 实现 defaulting webhooks 和 validating webhooks</a></li><li class="expanded "><a href="../cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> Running and deploying the controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> Deploying the cert manager</a></li><li class="expanded "><a href="../cronjob-tutorial/running-webhook.html" class="active"><strong aria-hidden="true">1.9.2.</strong> Deploying webhooks</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> Epilogue</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="../migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="../migration/guide.html"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="../migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="../reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="../reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="../reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="../reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="../reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="../reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="../reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="../reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="../reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="../reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="../reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="../reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="../reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="../reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="../reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="../reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="../reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="../reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../TODO.html">Appendix: The TODO Landing Page</a></li></ol>
+                <ol class="chapter"><li class="expanded affix "><a href="../introduction.html">引言</a></li><li class="expanded affix "><a href="../quick-start.html">快速入门</a></li><li class="spacer"></li><li class="expanded "><a href="../cronjob-tutorial/cronjob-tutorial.html"><strong aria-hidden="true">1.</strong> 教程: 构建 CronJob</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/basic-project.html"><strong aria-hidden="true">1.1.</strong> 基础项目中什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/empty-main.html"><strong aria-hidden="true">1.2.</strong> 每个程序都需要一个 main 入口</a></li><li class="expanded "><a href="../cronjob-tutorial/gvks.html"><strong aria-hidden="true">1.3.</strong> Groups、Versions 和 Kinds 之间的关系</a></li><li class="expanded "><a href="../cronjob-tutorial/new-api.html"><strong aria-hidden="true">1.4.</strong> 创建一个 API</a></li><li class="expanded "><a href="../cronjob-tutorial/api-design.html"><strong aria-hidden="true">1.5.</strong> 设计一个 API</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/other-api-files.html"><strong aria-hidden="true">1.5.1.</strong> 简要说明: 其他文件是干什么的?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/controller-overview.html"><strong aria-hidden="true">1.6.</strong> controller 中有什么?</a></li><li class="expanded "><a href="../cronjob-tutorial/controller-implementation.html"><strong aria-hidden="true">1.7.</strong> 实现一个 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/main-revisited.html"><strong aria-hidden="true">1.7.1.</strong> main 文件修改什么?</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/webhook-implementation.html"><strong aria-hidden="true">1.8.</strong> 实现 defaulting webhooks 和 validating webhooks</a></li><li class="expanded "><a href="../cronjob-tutorial/running.html"><strong aria-hidden="true">1.9.</strong> 运行和部署 controller</a></li><li><ol class="section"><li class="expanded "><a href="../cronjob-tutorial/cert-manager.html"><strong aria-hidden="true">1.9.1.</strong> 部署 cert manager</a></li><li class="expanded "><a href="../cronjob-tutorial/running-webhook.html" class="active"><strong aria-hidden="true">1.9.2.</strong> 部署 webhooks</a></li></ol></li><li class="expanded "><a href="../cronjob-tutorial/epilogue.html"><strong aria-hidden="true">1.10.</strong> 结语</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial: Multi-Version API</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/api-changes.html"><strong aria-hidden="true">2.1.</strong> Changing things up</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion-concepts.html"><strong aria-hidden="true">2.2.</strong> Hubs, spokes, and other wheel metaphors</a></li><li class="expanded "><a href="../multiversion-tutorial/conversion.html"><strong aria-hidden="true">2.3.</strong> Implementing conversion</a></li><li><ol class="section"><li class="expanded "><a href="../multiversion-tutorial/webhooks.html"><strong aria-hidden="true">2.3.1.</strong> and setting up the webhooks</a></li></ol></li><li class="expanded "><a href="../multiversion-tutorial/deployment.html"><strong aria-hidden="true">2.4.</strong> Deployment and Testing</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../migrations.html"><strong aria-hidden="true">3.</strong> Migrations</a></li><li><ol class="section"><li class="expanded "><a href="../migration/v1vsv2.html"><strong aria-hidden="true">3.1.</strong> Kubebuilder v1 vs v2</a></li><li><ol class="section"><li class="expanded "><a href="../migration/guide.html"><strong aria-hidden="true">3.1.1.</strong> Migration Guide</a></li></ol></li><li class="expanded "><a href="../migration/multi-group.html"><strong aria-hidden="true">3.2.</strong> Single Group to Multi-Group</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../reference/reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="expanded "><a href="../reference/generating-crd.html"><strong aria-hidden="true">4.1.</strong> Generating CRDs</a></li><li class="expanded "><a href="../reference/using-finalizers.html"><strong aria-hidden="true">4.2.</strong> Using Finalizers</a></li><li class="expanded "><a href="../reference/kind.html"><strong aria-hidden="true">4.3.</strong> Kind cluster</a></li><li class="expanded "><a href="../reference/webhook-overview.html"><strong aria-hidden="true">4.4.</strong> What's a webhook?</a></li><li><ol class="section"><li class="expanded "><a href="../reference/admission-webhook.html"><strong aria-hidden="true">4.4.1.</strong> Admission webhook</a></li><li class="expanded "><a href="../reference/webhook-for-core-types.html"><strong aria-hidden="true">4.4.2.</strong> Webhooks for Core Types</a></li></ol></li><li class="expanded "><a href="../reference/markers.html"><strong aria-hidden="true">4.5.</strong> Markers for Config/Code Generation</a></li><li><ol class="section"><li class="expanded "><a href="../reference/markers/crd.html"><strong aria-hidden="true">4.5.1.</strong> CRD Generation</a></li><li class="expanded "><a href="../reference/markers/crd-validation.html"><strong aria-hidden="true">4.5.2.</strong> CRD Validation</a></li><li class="expanded "><a href="../reference/markers/crd-processing.html"><strong aria-hidden="true">4.5.3.</strong> CRD Processing</a></li><li class="expanded "><a href="../reference/markers/webhook.html"><strong aria-hidden="true">4.5.4.</strong> Webhook</a></li><li class="expanded "><a href="../reference/markers/object.html"><strong aria-hidden="true">4.5.5.</strong> Object/DeepCopy</a></li><li class="expanded "><a href="../reference/markers/rbac.html"><strong aria-hidden="true">4.5.6.</strong> RBAC</a></li></ol></li><li class="expanded "><a href="../reference/controller-gen.html"><strong aria-hidden="true">4.6.</strong> controller-gen CLI</a></li><li class="expanded "><a href="../reference/artifacts.html"><strong aria-hidden="true">4.7.</strong> Artifacts</a></li><li class="expanded "><a href="../reference/writing-tests.html"><strong aria-hidden="true">4.8.</strong> Writing controller tests</a></li><li><ol class="section"><li class="expanded "><a href="../reference/testing/envtest.html"><strong aria-hidden="true">4.8.1.</strong> Using envtest in integration tests</a></li></ol></li><li class="expanded "><a href="../reference/metrics.html"><strong aria-hidden="true">4.9.</strong> Metrics</a></li><li class="spacer"></li></ol></li><li class="expanded "><a href="../TODO.html">Appendix: The TODO Landing Page</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,29 +152,25 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#deploying-admission-webhooks" id="deploying-admission-webhooks">Deploying Admission Webhooks</a></h1>
+                        <h1><a class="header" href="#部署-admission-webhooks" id="部署-admission-webhooks">部署 Admission Webhooks</a></h1>
 <h2><a class="header" href="#kind-cluster" id="kind-cluster">Kind Cluster</a></h2>
-<p>It is recommended to develop your webhook with a
-<a href="../reference/kind.html">kind</a> cluster for faster iteration.
-Why?</p>
+<p>建议使用 <a href="../reference/kind.html">kind</a> 集群开发 Webhook，以加快迭代速度。 为什么？</p>
 <ul>
-<li>You can bring up a multi-node cluster locally within 1 minute.</li>
-<li>You can tear it down in seconds.</li>
-<li>You don’t need to push your images to remote registry.</li>
+<li>你可以在1分钟内在本地启动多节点群集。</li>
+<li>你可以在几秒钟内将其拆除。</li>
+<li>你无需将 images 推送到远程镜像仓库。</li>
 </ul>
 <h2><a class="header" href="#cert-manager" id="cert-manager">Cert Manager</a></h2>
-<p>You need follow <a href="./cert-manager.html">this</a> to install the cert manager bundle.</p>
+<p>你需要 <a href="./cert-manager.html">按此</a> 安装 cert manager bundle。</p>
 <h2><a class="header" href="#build-your-image" id="build-your-image">Build your image</a></h2>
-<p>Run the following command to build your image locally.</p>
+<p>运行以下命令以在本地生成 image。</p>
 <pre><code class="language-bash">make docker-build
 </code></pre>
-<p>You don’t need to push the image to a remote container registry if you are using
-a kind cluster. You can directly load your local image to your kind cluster:</p>
+<p>如果你使用 <code>kind</code> 创建的群集，则无需将 image 推送到远程镜像仓库。你可以将本地的 image 直接加载到 <code>kind</code> 创建的群集：</p>
 <pre><code class="language-bash">kind load docker-image your-image-name:your-tag
 </code></pre>
-<h2><a class="header" href="#deploy-webhooks" id="deploy-webhooks">Deploy Webhooks</a></h2>
-<p>You need to enable the webhook and cert manager configuration through kustomize.
-<code>config/default/kustomization.yaml</code> should now look like the following:</p>
+<h2><a class="header" href="#部署-webhooks" id="部署-webhooks">部署 Webhooks</a></h2>
+<p>您可以通过 kustomize 启动 webhook 和 cert manager 配置，<code>config/default/kustomization.yaml</code>  应改成如下所示：</p>
 <pre><code class="language-yaml"># Adds namespace to all resources.
 namespace: project-system
 
@@ -246,25 +242,18 @@ vars:
     version: v1
     name: webhook-service
 </code></pre>
-<p>Now you can deploy it to your cluster by</p>
+<p>现在你可以通过执行下面的命令将它们部署到你的集群中</p>
 <pre><code class="language-bash">make deploy IMG=&lt;some-registry&gt;/&lt;project-name&gt;:tag
 </code></pre>
-<p>Wait a while til the webhook pod comes up and the certificates are provisioned.
-It usually completes within 1 minute.</p>
-<p>Now you can create a valid CronJob to test your webhooks. The creation should
-successfully go through.</p>
+<p>稍等片刻，直到出现 webhook pod 启动并且证书被提供。它通常在1分钟内完成。</p>
+<p>现在，您可以创建一个有效的 CronJob 来测试你的 webhooks，创建应该成功完成。</p>
 <pre><code class="language-bash">kubectl create -f config/samples/batch_v1_cronjob.yaml
 </code></pre>
-<p>You can also try to create an invalid CronJob (e.g. use an ill-formatted
-schedule field). You should see a creation failure with a validation error.</p>
+<p>您也可以尝试创建一个无效的 CronJob(例如，使用格式错误的 cron schedule 字段),您应该看到创建失败并显示  validation error。</p>
 <aside class="note warning">
 <h1><a class="header" href="#the-bootstrapping-problem" id="the-bootstrapping-problem">The Bootstrapping Problem</a></h1>
-<p>If you are deploying a webhook for pods in the same cluster, be
-careful about the bootstrapping problem, since the creation request of the
-webhook pod would be sent to the webhook pod itself, which hasn’t come up yet.</p>
-<p>To make it work, you can either use <a href="https://github.com/kubernetes/api/blob/kubernetes-1.14.5/admissionregistration/v1beta1/types.go#L189-L233">namespaceSelector</a> if your kubernetes
-version is 1.9+ or use <a href="https://github.com/kubernetes/api/blob/kubernetes-1.15.2/admissionregistration/v1beta1/types.go#L262-L274">objectSelector</a> if your kubernetes version is 1.15+ to
-skip itself.</p>
+<p>如果你在集群中通过 Webhook 部署 pods, 请注意 Bootstrapping Problem，因为创建 Pod 的请求将会发给 Webhook, 但是在 Webhook 启动之前它还不能处理创建 Pod 的请求, 它们互相矛盾。</p>
+<p>为了使其工作，如果你的 kubernetes 版本为 1.9+，则可以使用<a href="https://github.com/kubernetes/api/blob/kubernetes-1.14.5/admissionregistration/v1beta1/types.go#L189-L233">namespaceSelector</a>；如果你的 kubernetes 版本为 1.15+，则可以使用 <a href="https://github.com/kubernetes/api/blob/kubernetes-1.15.2/admissionregistration/v1beta1/types.go#L262-L274">objectSelector</a> 来忽略自己。</p>
 </aside>
 
                     </main>
@@ -304,21 +293,6 @@ skip itself.</p>
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
