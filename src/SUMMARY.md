@@ -21,7 +21,7 @@
 
     - [main 文件修改什么?](./cronjob-tutorial/main-revisited.md)
 
-  - [Implementing defaulting/validating webhooks](./cronjob-tutorial/webhook-implementation.md)
+  - [实现 defaulting webhooks 和 validating webhooks](./cronjob-tutorial/webhook-implementation.md)
   - [Running and deploying the controller](./cronjob-tutorial/running.md)
 
     - [Deploying the cert manager](./cronjob-tutorial/cert-manager.md)
