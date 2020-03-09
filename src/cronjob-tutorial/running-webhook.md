@@ -10,7 +10,7 @@
 
 ## Cert Manager
 
-你需要 [按此](./cert-manager.md) 安装 cert manager bundle。
+你需要 [按此](./cert-manager.md) 安装 cert manager bundle。你只需要安装就好，对于证书的申请 kubebuilder 会帮你做。
 
 ## Build your image
 
@@ -28,7 +28,8 @@ kind load docker-image your-image-name:your-tag
 
 ## 部署 Webhooks
 
-您可以通过 kustomize 启动 webhook 和 cert manager 配置，`config/default/kustomization.yaml`  应改成如下所示：
+您可以通过 kustomize 启动 webhook 和 cert manager 配置，将 `config/default/kustomization.yaml` 
+改成如下所示：
 
 ```yaml
 {{#include ./testdata/project/config/default/kustomization.yaml}}
@@ -37,6 +38,7 @@ kind load docker-image your-image-name:your-tag
 现在你可以通过执行下面的命令将它们部署到你的集群中
 
 ```bash
+make docker-build docker-push IMG=<some-registry>/<project-name>:tag
 make deploy IMG=<some-registry>/<project-name>:tag
 ```
 
@@ -48,7 +50,7 @@ make deploy IMG=<some-registry>/<project-name>:tag
 kubectl create -f config/samples/batch_v1_cronjob.yaml
 ```
 
-您也可以尝试创建一个无效的 CronJob(例如，使用格式错误的 cron schedule 字段),您应该看到创建失败并显示  validation error。
+您也可以尝试创建一个无效的 CronJob (例如，使用格式错误的 cron schedule 字段),您应该看到创建失败并显示  validation error。
 
 <aside class="note warning">
 

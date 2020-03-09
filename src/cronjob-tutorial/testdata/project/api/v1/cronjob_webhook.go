@@ -201,3 +201,4 @@ func (r *CronJob) validateCronJobName() *field.Error {
 }
 
 // +kubebuilder:docs-gen:collapse=Validate object name
+

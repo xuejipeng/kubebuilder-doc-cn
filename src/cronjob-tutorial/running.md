@@ -52,4 +52,17 @@ make docker-build docker-push IMG=<some-registry>/<project-name>:tag
 make deploy IMG=<some-registry>/<project-name>:tag
 ```
 
+此时 `Webhook` 并不能正确运行，如果想 `Webhook` 正确运行，请参[运行 Webhook](./running-webhook.md)。
+
+### 注意
+
+1. 为了解决镜像拉不到的问题，可以将 `Dockerfile` 中的 
+`FROM gcr.io/distroless/static:nonroot` 修改为 `FROM golang:1.13` 
+或任意可正常拉取到的镜像。将 `/config/default/manager_auth_proxy_patch.yaml` 文件中的
+ `gcr.io/kubebuilder/kube-rbac-proxy:v0.4.1` 改为 `xuejipeng/learn:kube-rbac-proxy-v0.4.1`
+
+2. 为了加速构建，我们可以把 Makefile 中 `docker-build` 后面的 `test` 去掉
+
+
+
 如果像以前一样再次get cronjobs ，我们应该可以看到 controller 再次运行！

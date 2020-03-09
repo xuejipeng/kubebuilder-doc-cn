@@ -60,9 +60,11 @@ func init() {
 
 1. 为 metrics 绑定一些基本的 flags。
 
-2. 实例化一个 manager，用于跟踪我们运行的所有 controllers，并设置 shared caches 和可以连接到 API server 的 k8s clients 实例，并将 Scheme 配置传入 manager。
+2. 实例化一个 manager，用于跟踪我们运行的所有 controllers，
+并设置 shared caches 和可以连接到 API server 的 k8s clients 实例，并将 Scheme 配置传入 manager。
 
-3. 运行我们的 manager, 而 manager 又运行所有的 controllers 和 webhook。manager 会一直处于运行状态，直到收到正常关闭信号为止。
+3. 运行我们的 manager, 而 manager 又运行所有的 controllers 和 webhook。
+manager 会一直处于运行状态，直到收到正常关闭信号为止。
 这样，当我们的 operator 运行在 Kubernetes 上时，我们可以通过优雅的方式终止这个 Pod。
 
 虽然目前我们还没有什么可以运行，但是请记住 `+kubebuilder:scaffold:builder` 注释的位置 -- 很快那里就会变得有趣。

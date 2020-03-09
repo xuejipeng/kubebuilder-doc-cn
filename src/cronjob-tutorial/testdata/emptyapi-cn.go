@@ -58,7 +58,7 @@ type CronJobStatus struct {
 `+kubebuilder:object:root` 注释称为标记(marker)。
 稍后我们还会看到更多它们，它们提供了一些元数据，
 来告诉 [controller-tools](https://github.com/kubernetes-sigs/controller-tools)(我们的代码和 YAML 生成器) 一些额外的信息。
-这个注释告诉 `object` 这是一种 `Kind`。
+这个注释告诉 `object` 这是一种 `root type Kind`。
 然后，`object` 生成器会为我们生成 [runtime.Object](https://godoc.org/k8s.io/apimachinery/pkg/runtime#Object) 接口的实现，
 这是所有 Kinds 必须实现的接口。
 */
