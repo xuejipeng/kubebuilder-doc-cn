@@ -153,17 +153,24 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#设计一个-api" id="设计一个-api">设计一个 API</a></h1>
-<p>在 Kubernetes 中，我们有一些设计 API 的规范。比如：所有可序列化字段必须是<code>camelCase</code>(驼峰) 格式，所以我们使用 JSON 的 tags 去指定它们，当一个字段可以为空时，我们会用 <code>omitempty</code> tag 去标记它。</p>
-<p>字段类型大多是原始数据类型，Numbers 类型比较特殊：处于兼容性的考虑，numbers 类型只接受三种数据类型：整形只能使用 <code>int32</code> 和 <code>int64</code> 声明, 小数只能使用 <code>resource.Quantity</code> 声明</p>
+<p>在 Kubernetes 中，我们有一些设计 API 的规范。
+比如：所有可序列化字段必须是<code>camelCase</code>(驼峰) 格式，所以我们使用 JSON 的 tags 去指定它们，当一个字段可以为空时，我们会用 <code>omitempty</code> tag 去标记它。</p>
+<p>字段类型大多是原始数据类型，Numbers 类型比较特殊：
+出于兼容性的考虑，numbers 类型只接受三种数据类型：整形只能使用 <code>int32</code> 和 <code>int64</code> 声明, 
+小数只能使用 <code>resource.Quantity</code> 声明</p>
 <details><summary>我的天, Quantity 又是什么鬼</summary>
-<p>Quantity 是十进制数字的一种特殊表示法，具有明确固定的表示形式，使它们在计算机之间更易于移植。在Kubernetes中指定资源请求和Pod的限制时，您可能已经注意到它们。</p>
-<p>从概念上讲，它们的工作方式类似于浮点数：它们具有有效位数，基数和指数。它们的可序列化和人类可读格式使用整数和后缀来指定值，这与我们描述计算机存储的方式非常相似。</p>
-<p>例如，该值2m表示0.002十进制表示法。 2Ki 表示2048十进制，而2K表示2000十进制。如果要指定分数，请切换到一个后缀，该后缀使我们可以使用整数：2.5is 2500m。</p>
-<p>支持两个基数：10和2（分别称为十进制和二进制）。十进制基数用“常规” SI后缀（例如 M和K）表示，而二进制基数用“ mebi”表示法（例如Mi 和Ki）指定。想想<a href="https://en.wikipedia.org/wiki/Binary_prefix">megabytes vs
+<p>Quantity 是十进制数字的一种特殊表示法，具有明确固定的表示形式，
+使它们在计算机之间更易于移植。在Kubernetes中指定资源请求和Pod的限制时，您可能已经注意到它们。</p>
+<p>从概念上讲，它们的工作方式类似于浮点数：它们具有有效位数，基数和指数。
+它们的可序列化和人类可读格式使用整数和后缀来指定值，这与我们描述计算机存储的方式非常相似。</p>
+<p>例如，该值2m表示0.002十进制表示法。 2Ki 表示2048十进制，而2K表示2000十进制。
+如果要指定分数，请切换到一个后缀，该后缀使我们可以使用整数：2.5is 2500m。</p>
+<p>支持两个基数：10和2（分别称为十进制和二进制）。
+十进制基数用“常规” SI后缀（例如 M和K）表示，而二进制基数用“ mebi”表示法（例如Mi 和Ki）指定。想想<a href="https://en.wikipedia.org/wiki/Binary_prefix">megabytes vs
 mebibytes</a>。</p>
 </details>
 <p>我们还使用了另一种特殊类型：<code>metav1.Time</code>。它除了格式在 Kubernetes 中比较通用外，功能与 <code> time.Time</code> 完全相同。</p>
-<p>顺便让我们看一下 CronJob object 的内容！</p>
+<p>先让我们看一下 CronJob 应该是什么样子的！</p>
 <div class="literate"><cite class="literate-source"><a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/api/v1/cronjob_types.go">project/api/v1/cronjob_types.go</a></cite><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Apache License</span></pre></summary>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
@@ -201,9 +208,9 @@ import (
 <li>一个暂停(<code>Suspend</code>)功能，以防止 Job 在运行过程中出现什么错误。</li>
 <li>限制历史 Job 的数量（<code>SuccessfulJobsHistoryLimit</code>）</li>
 </ul>
-<p>请记住，因为 job 不会读取自己的状态，所以我们需要用一些方式去跟踪一个 job 是否运行，
-我们可以用至少一个 old job 来完成这个功能。（不明白，回头再改）</p>
-<p>我们会用几个标记 (<code>// +comment</code>) 去定义一些额外的数据，这些标记在
+<p>请记住，因为 job 不会读取自己的状态，所以我们需要用一些方式去跟踪一个 CronJob 是否已经运行过 Job，
+我们可以用至少一个 old job 来完成这个功能。</p>
+<p>我们会用几个标记 (<code>//+comment</code>) 去定义一些额外的数据，这些标记在
 <a href="https://github.com/kubernetes-sigs/controller-tools">controller-tools</a>
 生成 CRD manifest 时会被使用。
 稍后我们还将看到，controller-tools 还会使用 GoDoc 来为字段生成描述信息。</p>
@@ -254,7 +261,8 @@ type CronJobSpec struct {
 </code></pre>
 <p>我们自定义了一个类型（<code>ConcurrencyPolicy</code>）来保存我们的并发策略。
 它实际上只是一个字符串，但是这个类型名称提供了额外的说明，
-我们还将验证附加到类型上,而不是字段上，从而使验证更易于重用。</p>
+我们还将验证附加到类型上，而不是字段上，从而使验证更易于重用。
+<code>// +kubebuilder:validation:Enum=Allow;Forbid;Replace</code> 表示这个 <code>ConcurrencyPolicy</code> 只接受 <code>Allow</code>、<code>Forbid</code>、<code>Replace</code> 这三个值。</p>
 <pre><code class="language-go">// ConcurrencyPolicy describes how the job will be handled.
 // Only one of the following concurrent policies may be specified.
 // If none of the following policies is specified, the default one
@@ -275,7 +283,7 @@ const (
 )
 </code></pre>
 <p>下面，让我们设计 <code>status</code>,它用来存储观察到的状态。它包含我们希望用户或其他 controllers 能够获取的所有信息</p>
-<p>我们将保留一份正在运行的 Job 列表，以及上一次成功运行 Job 的列表。
+<p>我们将保留一份正在运行的 Job 列表，以及最后一次成功运行 Job 的时间。
 注意，如上所述，我们使用 metav1.Time 而不是 time.Time 来获得稳定的序列化。</p>
 <pre><code class="language-go">// CronJobStatus defines the observed state of CronJob
 type CronJobStatus struct {
@@ -292,7 +300,7 @@ type CronJobStatus struct {
 }
 </code></pre>
 <p><span id="installation"></span>
-最后我们只剩下了 <code>CronJob</code> 结构体，如之前说的，我们不需要修改改结构体的任何内容，
+最后我们只剩下了 <code>CronJob</code> 结构体，如之前说的，我们不需要修改该结构体的任何内容，
 但是我们希望操作改 Kind 像操作 Kubernetes 内置资源一样，所以我们需要增加一个 mark <code>+kubebuilder:subresource:status</code>,
 来声明一个status subresource, 关于 subresource 的更多信息可以参考
 <a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#subresources">k8s 文档</a></p>

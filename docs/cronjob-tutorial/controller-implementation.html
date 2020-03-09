@@ -250,16 +250,13 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	ctx := context.Background()
 	log := r.Log.WithValues(&quot;cronjob&quot;, req.NamespacedName)
 </code></pre>
-<pre><code>### 1: 按 namespace 加载 CronJob
-
-我们使用 client 获取 CronJob。
+<h3><a class="header" href="#1-按-namespace-加载-cronjob" id="1-按-namespace-加载-cronjob">1: 按 namespace 加载 CronJob</a></h3>
+<p>我们使用 client 获取 CronJob。
 所有的 client 方法都将 context（用来取消请求）作为其第一个参数，
 并将所讨论的 object 作为其最后一个参数。 Get 方法有点特殊，
-因为它使用 [`NamespacedName`](https://godoc.org/sigs.k8s.io/controller-runtime/pkg/client#ObjectKey)
-作为中间参数（大多数没有中间参数，如下所示）。
-
-最后，许多 client 方法也采用可变参数选项(也就是 &quot;...&quot;)。
-</code></pre>
+因为它使用 <a href="https://godoc.org/sigs.k8s.io/controller-runtime/pkg/client#ObjectKey"><code>NamespacedName</code></a>
+作为中间参数（大多数没有中间参数，如下所示）。</p>
+<p>最后，许多 client 方法也采用可变参数选项(也就是 “...”)。</p>
 <pre><code class="language-go">	var cronJob batch.CronJob
 	if err := r.Get(ctx, req.NamespacedName, &amp;cronJob); err != nil {
 		log.Error(err, &quot;unable to fetch CronJob&quot;)
@@ -269,27 +266,24 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 		return ctrl.Result{}, client.IgnoreNotFound(err)
 	}
 </code></pre>
-<pre><code>### 2: 列出所有 active jobs，并更新状态
-要完全更新我们的状态，我们需要列出此 namespace 中属于此 CronJob 的所有 Job。
+<h3><a class="header" href="#2-列出所有-active-jobs并更新状态" id="2-列出所有-active-jobs并更新状态">2: 列出所有 active jobs，并更新状态</a></h3>
+<p>要完全更新我们的状态，我们需要列出此 namespace 中属于此 CronJob 的所有 Job。
 与 Get 方法类似，我们可以使用 List 方法列出 Job。
-注意，我们使用可变参数选项来设置 `client.InNamespace` 和 `client.MatchingFields`。
-</code></pre>
+注意，我们使用可变参数选项来设置 <code>client.InNamespace</code> 和 <code>client.MatchingFields</code>。</p>
 <pre><code class="language-go">	var childJobs kbatch.JobList
 	if err := r.List(ctx, &amp;childJobs, client.InNamespace(req.Namespace), client.MatchingFields{jobOwnerKey: req.Name}); err != nil {
 		log.Error(err, &quot;unable to list child Jobs&quot;)
 		return ctrl.Result{}, err
 	}
 </code></pre>
-<pre><code>当得到所有的 Job 后，我们把 Job 的状态分为 active、successful和 failed,
+<p>当得到所有的 Job 后，我们把 Job 的状态分为 active、successful和 failed,
 并跟踪他们最近的运行情况，以便将其记录在 status 中。
 请记住，status 应该可以从整体的状态重新构造，
 因此从 root object 的状态读取信息通常不是一个好主意。
 相反，您应该在每次运行时重新构建它。
-这就是我们在这里要做的。
-
-我们可以使用 status conditions 来检查作业是“完成”、成功或失败。
-我们将把这种逻辑放在匿名函数中，以使我们的代码更整洁。
-</code></pre>
+这就是我们在这里要做的。</p>
+<p>我们可以使用 status conditions 来检查作业是“完成”、成功或失败。
+我们将把这种逻辑放在匿名函数中，以使我们的代码更整洁。</p>
 <pre><code class="language-go">	// 查找状态为 active 的 Jobs
 	var activeJobs []*kbatch.Job
 	var successfulJobs []*kbatch.Job
@@ -297,10 +291,9 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	var mostRecentTime *time.Time // 找到最后一次运行 Job，以便我们更新状态
 </code></pre>
 <details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">isJobFinished</span></pre></summary>
-<pre><code>如果一项工作的 &quot;succeeded&quot; 或 &quot;failed&quot; 的 Conditions 标记为 &quot;true&quot;，我们认为该工作 &quot;finished&quot;。
-`Status.conditions` 使我们可以向 objects 添加可扩展的状态信息，
-其他人和 controller 可以通过检查这些状态信息以确定 Job 完成和健康状况。
-</code></pre>
+<p>如果一项工作的 “succeeded” 或 “failed” 的 Conditions 标记为 “true”，我们认为该工作 “finished”。
+<code>Status.conditions</code> 使我们可以向 objects 添加可扩展的状态信息，
+其他人和 controller 可以通过检查这些状态信息以确定 Job 完成和健康状况。</p>
 <pre><code class="language-go">	isJobFinished := func(job *kbatch.Job) (bool, kbatch.JobConditionType) {
 		for _, c := range job.Status.Conditions {
 			if (c.Type == kbatch.JobComplete || c.Type == kbatch.JobFailed) &amp;&amp; c.Status == corev1.ConditionTrue {
@@ -440,15 +433,12 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 <h3><a class="header" href="#5-获取到下一次要-schedule-的-job" id="5-获取到下一次要-schedule-的-job">5: 获取到下一次要 schedule 的 Job</a></h3>
 <p>如果 Job 没有被暂停，则需要计算下一次 schedule 的 Job，以及是否有尚未处理的 Job。</p>
 <details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">getNextSchedule</span></pre></summary>
-<pre><code>我们将使用有用的 cron 库来计算下一个 scheduled 时间。
-我们将从上次 Job 开始的时间计算下一次运行的时间，如果找不到上次运行的时间，就创建一个 CronJob。
-
-如果错过的 Job 数量太多，并且我们没有设置任何 deadlines，我们将释放这个 Job，
-以免造成 controller 重启。
-
-否则，我们将只返回错过的 Job（我们将使用最后一个运行的 Job）和下一次要运行的 Job，
-以便让我们知道何时该重新进行 reconcile。
-</code></pre>
+<p>我们将使用有用的 cron 库来计算下一个 scheduled 时间。
+我们将从上次 Job 开始的时间计算下一次运行的时间，如果找不到上次运行的时间，就创建一个 CronJob。</p>
+<p>如果错过的 Job 数量太多，并且我们没有设置任何 deadlines，我们将释放这个 Job，
+以免造成 controller 重启。</p>
+<p>否则，我们将只返回错过的 Job（我们将使用最后一个运行的 Job）和下一次要运行的 Job，
+以便让我们知道何时该重新进行 reconcile。</p>
 <pre><code class="language-go">	getNextSchedule := func(cronJob *batch.CronJob, now time.Time) (lastMissed time.Time, next time.Time, err error) {
 		sched, err := cron.ParseStandard(cronJob.Spec.Schedule)
 		if err != nil {

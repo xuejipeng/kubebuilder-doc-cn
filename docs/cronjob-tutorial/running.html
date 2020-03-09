@@ -199,6 +199,19 @@ kubectl get job
 <pre><code class="language-bash">make docker-build docker-push IMG=&lt;some-registry&gt;/&lt;project-name&gt;:tag
 make deploy IMG=&lt;some-registry&gt;/&lt;project-name&gt;:tag
 </code></pre>
+<p>此时 <code>Webhook</code> 并不能正确运行，如果想 <code>Webhook</code> 正确运行，请参<a href="./running-webhook.html">运行 Webhook</a>。</p>
+<h3><a class="header" href="#注意" id="注意">注意</a></h3>
+<ol>
+<li>
+<p>为了解决镜像拉不到的问题，可以将 <code>Dockerfile</code> 中的 
+<code>FROM gcr.io/distroless/static:nonroot</code> 修改为 <code>FROM golang:1.13</code> 
+或任意可正常拉取到的镜像。将 <code>/config/default/manager_auth_proxy_patch.yaml</code> 文件中的
+<code>gcr.io/kubebuilder/kube-rbac-proxy:v0.4.1</code> 改为 <code>xuejipeng/learn:kube-rbac-proxy-v0.4.1</code></p>
+</li>
+<li>
+<p>为了加速构建，我们可以把 Makefile 中 <code>docker-build</code> 后面的 <code>test</code> 去掉</p>
+</li>
+</ol>
 <p>如果像以前一样再次get cronjobs ，我们应该可以看到 controller 再次运行！</p>
 
                     </main>

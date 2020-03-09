@@ -153,13 +153,17 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#创建一个-api" id="创建一个-api">创建一个 API</a></h1>
-<p>创建一个新的 Kind (你还记得<a href="./gvks.html#kinds-and-resources">上一章</a>的内容, 对吗?)和相应的 controller，我们可以使用<code> kubebuilder create api</code> 命令:</p>
+<p>创建一个新的 Kind (你还记得<a href="./gvks.html#kinds-and-resources">上一章</a>的内容, 对吗?)和相应的 controller，
+我们可以使用<code> kubebuilder create api</code> 命令:</p>
 <pre><code class="language-bash">kubebuilder create api --group batch --version v1 --kind CronJob
 </code></pre>
 <p>当我们第一次执行这个命令时，它会为创建一个新的 <code>group-version</code> 目录</p>
-<p>在这里，<a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/api/v1"><code>api/v1/</code></a> 这个目录会被创建, 对应的 <code>group-version</code> 是 <code>batch.tutorial.kubebuilder.io/v1</code> (还记得我们一开始设置的<a href="cronjob-tutorial.html#scaffolding-out-our-project"><code>--domain</code>
+<p>在这里，<a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/project/api/v1"><code>api/v1/</code></a> 
+这个目录会被创建, 对应的 <code>group-version</code> 是 <code>batch.tutorial.kubebuilder.io/v1</code> 
+(还记得我们一开始设置的<a href="cronjob-tutorial.html#scaffolding-out-our-project"><code>--domain</code>
 setting</a>) 参数么)</p>
-<p>它也会创建 <code>api/v1/cronjob_types.go</code> 文件并添加  <code>CronJob Kind</code>, 每次我们运行这个命令但是指定不同的 <code>Kind</code> 时, 他都会为我们创建一个 <code>xxx_types.go</code> 文件。</p>
+<p>它也会创建 <code>api/v1/cronjob_types.go</code> 文件并添加  <code>CronJob Kind</code>, 
+每次我们运行这个命令但是指定不同的 <code>Kind</code> 时, 他都会为我们创建一个 <code>xxx_types.go</code> 文件。</p>
 <p>先让我们看看我们得到了什么开箱即用的东西，然后我们就开始填写它。</p>
 <div class="literate"><cite class="literate-source"><a href="https://sigs.k8s.io/kubebuilder/docs/book/src/cronjob-tutorial/testdata/emptyapi-cn.go">emptyapi-cn.go</a></cite><details class="collapse-code"><summary class="hljs"><pre class="hljs"><span class="hljs-comment">Apache License</span></pre></summary>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
@@ -209,7 +213,7 @@ type CronJobStatus struct {
 <p><code>+kubebuilder:object:root</code> 注释称为标记(marker)。
 稍后我们还会看到更多它们，它们提供了一些元数据，
 来告诉 <a href="https://github.com/kubernetes-sigs/controller-tools">controller-tools</a>(我们的代码和 YAML 生成器) 一些额外的信息。
-这个注释告诉 <code>object</code> 这是一种 <code>Kind</code>。
+这个注释告诉 <code>object</code> 这是一种 <code>root type Kind</code>。
 然后，<code>object</code> 生成器会为我们生成 <a href="https://godoc.org/k8s.io/apimachinery/pkg/runtime#Object">runtime.Object</a> 接口的实现，
 这是所有 Kinds 必须实现的接口。</p>
 <pre><code class="language-go">// +kubebuilder:object:root=true
