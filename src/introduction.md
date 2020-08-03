@@ -1,4 +1,4 @@
-**注意:** 一些读者可能想直接去 [Quick
+**注意:** 快速开始 [Quick
 Start](quick-start.md).
 
 **如果正在使用 Kubebuilder v1, 请查看 [Kubebuilder v1](https://book-v1.book.kubebuilder.io)。**

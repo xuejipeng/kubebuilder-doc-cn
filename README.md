@@ -4,17 +4,16 @@
 
 ## Running mdBook
 
-The kubebuilder book is served using [mdBook](https://github.com/rust-lang-nursery/mdBook). If you want to test changes to the book locally, follow these directions:
+本书使用 [mdBook](https://github.com/rust-lang-nursery/mdBook) 构建. 如果想在本地测试更改，请执行以下步骤:
 
-1. Follow the instructions at [https://github.com/rust-lang-nursery/mdBook#installation](https://github.com/rust-lang-nursery/mdBook#installation) to
-  install mdBook.
-2. cd into the repo directory
-3. Run `mdbook serve`
-4. If you  get Error `not found controller-gen in $PATH`, you can do 
+1. 根据此链接 [https://github.com/rust-lang-nursery/mdBook#installation](https://github.com/rust-lang-nursery/mdBook#installation) 安装 mdBook.
+2. cd 到项目目录
+3. 运行 `mdbook serve`
+4. 如果报错 `not found controller-gen in $PATH`, 执行以下命令 
 
   ```bash
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.2.5
   ```
-5. Visit [http://localhost:3000](http://localhost:3000)
+5. 浏览器打开 [http://localhost:3000](http://localhost:3000)
