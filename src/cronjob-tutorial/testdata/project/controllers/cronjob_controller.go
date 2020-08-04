@@ -118,8 +118,14 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 		log.Error(err, "unable to list child Jobs")
 		return ctrl.Result{}, err
 	}
-
 	/*
+		<aside class="note">
+		<h1>什么是索引?</h1>
+			<p>reconciler 默认获取 cronjob 所有子任务的所有状态.
+			随着 cronjobs 数量增加，我们必须过滤掉一些内容，因为获取这些内容可能会变得相当慢。为了提高查询效率，这些 job 将使用 controller 的名字创建索引.
+		将一个 jobOwnerKey 字段添加到缓存的 job。该键指向拥有的 controller 并用作索引。在本文档的后面，我们将配置 manager 以实际索引该字段.</p>
+			</aside>
+
 		当得到所有的 Job 后，我们把 Job 的状态分为 active、successful和 failed,
 		并跟踪他们最近的运行情况，以便将其记录在 status 中。
 		请记住，status 应该可以从整体的状态重新构造，

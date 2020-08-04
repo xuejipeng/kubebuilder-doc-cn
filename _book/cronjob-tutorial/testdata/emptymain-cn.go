@@ -40,7 +40,7 @@ import (
 
 /*
 
-每组 controller 都需要一个 [*Scheme*](https://book.kubebuilder.io/cronjob-tutorial/gvks.html#err-but-whats-that-scheme-thing)，
+每组 controller 都需要一个 [*Scheme*](https://xuejipeng.github.io/kubebuilder-doc-cn/cronjob-tutorial/gvks.html#err-but-whats-that-scheme-thing)，
 Scheme 会提供 Kinds 与 Go types 之间的映射关系(现在你只需要记住这一点)。
 在编写 API 定义时，我们将会进一步讨论 Kinds。
 

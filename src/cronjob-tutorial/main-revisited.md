@@ -5,4 +5,4 @@
 
 {{#literatego ./testdata/project/main.go}}
 
-现在，我们可以实现我们的 controller 了
+现在，我们已经实现我们的 controller 了

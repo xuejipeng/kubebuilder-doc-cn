@@ -7,7 +7,7 @@
 
 `CronJob controller` 会控制 kubernetes 集群上的 job 每隔一段时间运行一次，它是基于 `Job controller` 实现的，`Job controller` 的 job 只会执行任务一次。
 
-通过重写 `Job controller`，我们可以更加了解如何与不属于集群的资源类型进行交互。
+通过重写 `Job controller`，我们可以更加了解如何与不属于 k8s 的资源类型进行交互。
 
 
 <aside class="note">

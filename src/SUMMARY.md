@@ -29,7 +29,7 @@
 
   - [结语](./cronjob-tutorial/epilogue.md)
 
-- [Tutorial: Multi-Version API](./multiversion-tutorial/tutorial.md)
+- [教程: 多版本 API](./multiversion-tutorial/tutorial.md)
 
   - [Changing things up](./multiversion-tutorial/api-changes.md)
   - [Hubs, spokes, and other wheel metaphors](./multiversion-tutorial/conversion-concepts.md)

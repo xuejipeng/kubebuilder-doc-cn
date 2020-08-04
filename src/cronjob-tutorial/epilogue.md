@@ -9,6 +9,7 @@
 
 - 编写单元/整合测试(使用  [envtest])
 - 为 `kubectl get` 命令[添加额外字段][printer-columns] 
+
 [envtest]: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/envtest
 
 [printer-columns]: /reference/generating-crd.md#additional-printer-columns
